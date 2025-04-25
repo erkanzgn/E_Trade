@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7DDA9C17-4D2A-4C7A-8251-207E4A4B95AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{4454A389-BFFF-4694-A12A-26B7A0F7FED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade.Catalog", "Services\Catalog\ETrade.Catalog\ETrade.Catalog.csproj", "{2FFC4A6D-15FD-47B4-8E5C-C011EA70BD85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FFC4A6D-15FD-47B4-8E5C-C011EA70BD85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FFC4A6D-15FD-47B4-8E5C-C011EA70BD85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FFC4A6D-15FD-47B4-8E5C-C011EA70BD85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FFC4A6D-15FD-47B4-8E5C-C011EA70BD85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4454A389-BFFF-4694-A12A-26B7A0F7FED0} = {7DDA9C17-4D2A-4C7A-8251-207E4A4B95AD}
+		{2FFC4A6D-15FD-47B4-8E5C-C011EA70BD85} = {4454A389-BFFF-4694-A12A-26B7A0F7FED0}
+	EndGlobalSection
+EndGlobal
