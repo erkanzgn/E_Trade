@@ -47,19 +47,19 @@ namespace ETrade.Order.WebApi.Controllers
         public async Task<IActionResult> CreateOrderDetail(CreateOrderDetailCommand command)
         {
             await _createOrderDetailCommandHandler.Handle(command);
-            return Ok("Ürün Detayı Bilgisi Başarıyla eklendi");
+            return Ok("Sipariş Detay Bilgisi Başarıyla eklendi");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateOrderDatail(UpdateOrderDetailCommand command)
         {
             await _updateOrderDetailCommandHandler.Handle(command);
-            return Ok("Ürün Detayı Bilgisi Başarıyla Güncellendi");
+            return Ok("Sipariş Detay Bilgisi Başarıyla Güncellendi");
         }
         [HttpDelete]
         public async Task<IActionResult> DeleteOrderDetail(int id)
         {
             await _removeOrderDetailCommandHandler.Handle(new RemoveOrderDetailCommand(id));
-            return Ok("Ürün Detayı Bilgisi Başarıyla Silindi");
+            return Ok("Sipariş Detay Bilgisi Başarıyla Silindi");
         }
     }
 }
