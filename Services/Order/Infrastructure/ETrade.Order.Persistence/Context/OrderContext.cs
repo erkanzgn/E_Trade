@@ -12,8 +12,8 @@ namespace ETrade.Order.Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=....;initial Catalog =ETradeOrderDb ;" +
-                "integrated Security=true ;trustservercertificate=true ");
+            optionsBuilder.UseSqlServer("Server=localhost,1440;initial Catalog =ETradeOrderDb;trustservercertificate=true;User=sa ;password=123456aA*"); ;
+               
         }
         public DbSet<Address>  Addresses { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
