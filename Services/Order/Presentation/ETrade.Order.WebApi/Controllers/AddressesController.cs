@@ -1,11 +1,13 @@
 ﻿using ETrade.Order.Application.Features.CQRS.Commands.AddressCommands;
 using ETrade.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using ETrade.Order.Application.Features.CQRS.Queries.AddressQueries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETrade.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AddressesController : ControllerBase
