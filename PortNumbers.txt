@@ -1,4 +1,5 @@
 Idenitiy --> localhost:5001
-Catalog --> localhost:7070
+Catalog --> localhost:7070(sorun çýkardý)- (7074)
 Discount --> localhost:7071
 Order --> localhost:7072
+Carrgo --> localhost:7073
