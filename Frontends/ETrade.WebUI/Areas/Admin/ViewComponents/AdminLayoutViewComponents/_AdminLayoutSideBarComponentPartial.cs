@@ -2,7 +2,7 @@
 
 namespace ETrade.WebUI.Areas.Admin.ViewComponents.AdminLayoutViewComponents
 {
-    public class _AdminLayoutSideBarComponentPartial:ViewComponent
+    public class _AdminLayoutSidebarComponentPartial:ViewComponent
     {
         public IViewComponentResult Invoke()
         {

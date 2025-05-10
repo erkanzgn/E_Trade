@@ -32,7 +32,7 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
                 return View(values);
             }
 
-            return  View();
+            return View();
         }
     }
 }
