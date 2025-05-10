@@ -30,6 +30,8 @@ namespace ETrade.Catalog.Mapping
             CreateMap<ProductImage, UpdateProductImageDto>().ReverseMap();
             CreateMap<ProductImage,GetByIdProductImageDto>().ReverseMap();
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
+
+            CreateMap<Product,ResultProductsWithCategoryDto>().ReverseMap();
         }
     }
 }
