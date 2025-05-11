@@ -1,5 +1,6 @@
 using AutoMapper; // Ensure this namespace is included
 using ETrade.Catalog.Services.CategoryServices;
+using ETrade.Catalog.Services.FeatureSliderServices;
 using ETrade.Catalog.Services.ProductDetailServices;
 using ETrade.Catalog.Services.ProductImageServices;
 using ETrade.Catalog.Services.ProductServices;
@@ -24,6 +25,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
 
 // Explicitly specify the method to resolve ambiguity
 builder.Services.AddAutoMapper( Assembly.GetExecutingAssembly());

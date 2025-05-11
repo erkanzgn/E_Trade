@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ETrade.Catalog.Dtos.CategoryDtos;
+using ETrade.Catalog.Dtos.FeatureSliderDtos;
 using ETrade.Catalog.Dtos.ProductDetailDtos;
 using ETrade.Catalog.Dtos.ProductDtos;
 using ETrade.Catalog.Dtos.ProductImageDtos;
@@ -32,6 +33,12 @@ namespace ETrade.Catalog.Mapping
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
 
             CreateMap<Product,ResultProductsWithCategoryDto>().ReverseMap();
+
+
+            CreateMap<FeatureSlider, ResultFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, UpdateFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, GetByIdFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, CreateFeatureSliderDto>().ReverseMap();
         }
     }
 }
