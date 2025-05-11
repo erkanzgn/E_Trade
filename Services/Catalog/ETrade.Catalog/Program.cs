@@ -4,6 +4,7 @@ using ETrade.Catalog.Services.FeatureSliderServices;
 using ETrade.Catalog.Services.ProductDetailServices;
 using ETrade.Catalog.Services.ProductImageServices;
 using ETrade.Catalog.Services.ProductServices;
+using ETrade.Catalog.Services.SpecialOfferServices;
 using ETrade.Catalog.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -26,6 +27,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
+builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 
 // Explicitly specify the method to resolve ambiguity
 builder.Services.AddAutoMapper( Assembly.GetExecutingAssembly());

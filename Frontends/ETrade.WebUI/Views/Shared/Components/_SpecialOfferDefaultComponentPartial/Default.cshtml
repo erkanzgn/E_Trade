@@ -1,19 +1,17 @@
-﻿
+﻿@model List<ResultSpecialOfferDto>
+
 <div class="col-lg-4">
-    <div class="product-offer mb-30" style="height: 200px;">
-        <img class="img-fluid" src="https://blog.vancity.com/wp-content/uploads/2017/05/SaleSigns-iStock-Blog-1000x484.jpg" alt="">
-        <div class="offer-text">
-            <h6 class="text-white text-uppercase">%20 İndirim</h6>
-            <h3 class="text-white mb-3">Özel Teklifler</h3>
-            <a href="" class="btn btn-primary">Alışverişe Başlayın</a>
+
+    @foreach(var item in Model)
+    {
+
+        <div class="product-offer mb-30" style="height: 200px;">
+            <img class="img-fluid" src="@item.ImgUrl" alt="">
+            <div class="offer-text">
+                <h6 class="text-white text-uppercase">@item.Title</h6>
+                <h3 class="text-white mb-3">@item.SubTitle</h3>
+                <a href="" class="btn btn-primary">Alışverişe Başlayın</a>
+            </div>
         </div>
-    </div>
-    <div class="product-offer mb-30" style="height: 200px;">
-        <img class="img-fluid" src="https://haus-wintersteller.eugendorf.com/wp-content/uploads/2020/09/shopping-in-eugendorf-iStock-1148925683.jpg" alt="">
-        <div class="offer-text">
-            <h6 class="text-white text-uppercase">%30 İndirim</h6>
-            <h3 class="text-white mb-3">Günün Fırsatı</h3>
-            <a href="" class="btn btn-primary">Hemen Yararlanın</a>
-        </div>
-    </div>
+    }
 </div>
