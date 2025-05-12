@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ETrade.Catalog.Dtos.AboutDtos;
 using ETrade.Catalog.Dtos.BrandDtos;
 using ETrade.Catalog.Dtos.CategoryDtos;
 using ETrade.Catalog.Dtos.FeatureDtos;
@@ -64,6 +65,11 @@ namespace ETrade.Catalog.Mapping
             CreateMap<Brand, UpdateBrandDto>().ReverseMap();
             CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
             CreateMap<Brand, CreateBrandDto>().ReverseMap();
+
+            CreateMap<About, ResultAboutDto>().ReverseMap();
+            CreateMap<About, UpdateAboutDto>().ReverseMap();
+            CreateMap<About, GetByIdAboutDto>().ReverseMap();
+            CreateMap<About, CreateAboutDto>().ReverseMap();
         }
     }
 }

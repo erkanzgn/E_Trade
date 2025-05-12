@@ -1,4 +1,5 @@
 using AutoMapper; // Ensure this namespace is included
+using ETrade.Catalog.Services.AboutServices;
 using ETrade.Catalog.Services.BrandServices;
 using ETrade.Catalog.Services.CategoryServices;
 using ETrade.Catalog.Services.FeatureService;
@@ -34,6 +35,7 @@ builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
 
 // Explicitly specify the method to resolve ambiguity
 builder.Services.AddAutoMapper( Assembly.GetExecutingAssembly());
