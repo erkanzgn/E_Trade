@@ -2,6 +2,8 @@
 using ETrade.Catalog.Dtos.ProductDtos;
 using ETrade.Catalog.Entities;
 using ETrade.Catalog.Settings;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ETrade.Catalog.Services.ProductServices
@@ -44,22 +46,27 @@ namespace ETrade.Catalog.Services.ProductServices
             return _mapper.Map<GetByIdProductDto>(values);
         }
 
-        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync()
-        {
-            var values = await _productCollection.Find(x => true).ToListAsync();
-            foreach (var item in values)
-            {
-               item.Category=await _categoryCollection.Find(x=>x.CategoryId==item.CategoryId).FirstAsync();
-               
-            }
-            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
-
-        }
-
         public async Task UpdateProductAsync(UpdateProductDto ProductDto)
         {
             var values = _mapper.Map<Product>(ProductDto);
             await _productCollection.FindOneAndReplaceAsync(x => x.ProductId == ProductDto.ProductId, values);
         }
+
+
+
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync()
+        {
+            var values = await _productCollection.Find(x => true).ToListAsync();
+            foreach (var item in values)
+            {
+                item.Category = await _categoryCollection.Find(x => x.CategoryId == item.CategoryId).FirstAsync();
+              
+            }
+            
+            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
+
+        }
+
+
     }
 }

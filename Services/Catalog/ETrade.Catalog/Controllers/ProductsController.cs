@@ -50,7 +50,7 @@ namespace ETrade.Catalog.Controllers
             return Ok("Ürün başarıyla güncellendi");
         }
         [HttpGet("ProductListWithCategory")]
-        public async Task<IActionResult> GetByIdProductsWithCategory()
+        public async Task<IActionResult> GetListProductsWithCategory()
         {
             var values = await _productService.GetProductsWithCategoryAsync();
             return Ok(values);

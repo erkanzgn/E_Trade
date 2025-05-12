@@ -10,7 +10,6 @@ namespace ETrade.Catalog.Dtos.ProductDtos
         public decimal ProductPrice { get; set; }
         public string ProductImageUrl { get; set; }
         public string ProductDescription { get; set; }
-        public string CategoryId { get; set; }
         public ResultCategoryDto Category { get; set; }
     }
 }

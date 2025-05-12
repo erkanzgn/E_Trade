@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ETrade.Catalog.Dtos.BrandDtos;
 using ETrade.Catalog.Dtos.CategoryDtos;
 using ETrade.Catalog.Dtos.FeatureDtos;
 using ETrade.Catalog.Dtos.FeatureSliderDtos;
+using ETrade.Catalog.Dtos.OfferDiscountDtos;
 using ETrade.Catalog.Dtos.ProductDetailDtos;
 using ETrade.Catalog.Dtos.ProductDtos;
 using ETrade.Catalog.Dtos.ProductImageDtos;
@@ -24,6 +26,8 @@ namespace ETrade.Catalog.Mapping
             CreateMap<Product,GetByIdProductDto>().ReverseMap();
             CreateMap<Product,CreateProductDto>().ReverseMap();
 
+            CreateMap<Product, ResultProductsWithCategoryDto>().ReverseMap();
+
             CreateMap<ProductDetail, ResultProductDetailDto>().ReverseMap();
             CreateMap<ProductDetail, UpdateProductDetailDto>().ReverseMap();
             CreateMap<ProductDetail, GetByIdProductDetailDto>().ReverseMap();
@@ -33,8 +37,6 @@ namespace ETrade.Catalog.Mapping
             CreateMap<ProductImage, UpdateProductImageDto>().ReverseMap();
             CreateMap<ProductImage,GetByIdProductImageDto>().ReverseMap();
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
-
-            CreateMap<Product,ResultProductsWithCategoryDto>().ReverseMap();
 
 
             CreateMap<FeatureSlider, ResultFeatureSliderDto>().ReverseMap();
@@ -52,6 +54,16 @@ namespace ETrade.Catalog.Mapping
             CreateMap<Feature, UpdateFeatureDto>().ReverseMap();
             CreateMap<Feature, GetByIdFeatureDto>().ReverseMap();
             CreateMap<Feature, CreateFeatureDto>().ReverseMap();
+
+            CreateMap<OfferDiscount, ResultOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, UpdateOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, GetByIdOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, CreateOfferDiscountDto>().ReverseMap();
+
+            CreateMap<Brand, ResultBrandDto>().ReverseMap();
+            CreateMap<Brand, UpdateBrandDto>().ReverseMap();
+            CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
+            CreateMap<Brand, CreateBrandDto>().ReverseMap();
         }
     }
 }

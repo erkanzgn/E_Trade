@@ -1,0 +1,20 @@
+          <div class="col-md-6">
+            <div class="product-offer mb-30" style="height: 300px;">
+                <img class="img-fluid" src="https://ideacdn.net/idea/dl/65/myassets/blogs/minnos-kirtasiye-urunleri.jpg?revision=1563540257" alt="">
+                <div class="offer-text">
+                    <h6 class="text-white text">%30'e varan Ýndirim</h6>
+                    <h3 class="text-white mb-3">Kýrtasiye Ürünleri</h3>
+                    <a href="" class="btn btn-primary">Alýþveriþe Baþlayýn</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="product-offer mb-30" style="height: 300px;">
+                <img class="img-fluid" src="https://cdn2.unrealengine.com/tr-dotw-egs-evergreen-asset-1920x1080-5602bd07b620.jpg?resize=1&w=854&h=480&quality=medium" alt="">
+                <div class="offer-text">
+                    <h6 class="text-white text">%25'e varan Ýndirim</h6>
+                    <h3 class="text-white mb-3">Teknolojik Aletler</h3>
+                    <a href="" class="btn btn-primary" >Alýþveriþe Baþlayýn</a>
+                </div>
+            </div>
+        </div>

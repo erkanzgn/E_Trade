@@ -142,7 +142,7 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             ViewBag.v0 = "Ürün İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7074/api/Products/ProductlistWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:7074/api/Products/ProductListWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
