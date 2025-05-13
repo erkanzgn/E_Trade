@@ -81,7 +81,7 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
         {
             ViewBag.v1 = "Anasayfa";
             ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Yeni Gğncellenme Sayfası";
+            ViewBag.v3 = "Yeni Güncellenme Sayfası";
             ViewBag.v0 = "Kategori İşlemleri";
 
             var client = _httpClientFactory.CreateClient();

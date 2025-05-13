@@ -42,6 +42,12 @@ namespace ETrade.Catalog.Services.ProductDetailServices
             return _mapper.Map<GetByIdProductDetailDto>(values);
         }
 
+        public async Task<GetByIdProductDetailDto> GetByProductIdProductDetailAsync(string id)
+        {
+            var values = await _productDetailCollection.Find(x => x.ProductId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductDetailDto>(values);
+        }
+
         public async Task UpdateProductDetailAsync(UpdateProductDetailDto ProductDetailDto)
         {
             var values = _mapper.Map<ProductDetail>(ProductDetailDto);

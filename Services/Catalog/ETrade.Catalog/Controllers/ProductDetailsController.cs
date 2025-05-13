@@ -29,6 +29,13 @@ namespace ETrade.Catalog.Controllers
             var values = await _productDetailService.GetByIdProductDetailAsync(id);
             return Ok(values);
         }
+
+        [HttpGet("GetByProductIdProductDetail")]
+        public async Task<IActionResult> GetByProductIdProductDetail(string id)
+        {
+            var values = await _productDetailService.GetByProductIdProductDetailAsync(id);
+            return Ok(values);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)
         {

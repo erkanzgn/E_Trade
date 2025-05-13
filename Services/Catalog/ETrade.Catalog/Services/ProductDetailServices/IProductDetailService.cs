@@ -10,5 +10,6 @@ namespace ETrade.Catalog.Services.ProductDetailServices
         Task UpdateProductDetailAsync(UpdateProductDetailDto ProductDetailDto);
         Task DeleteProductDetailAsync(string id);
         Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id);
+        Task<GetByIdProductDetailDto> GetByProductIdProductDetailAsync(string id);
     }
 }

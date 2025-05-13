@@ -4,3 +4,4 @@ Discount --> localhost:7071
 Order --> localhost:7072
 Cargo --> localhost:7073
 Basket---> localhost:7075
+Comment---->localhost:7076
