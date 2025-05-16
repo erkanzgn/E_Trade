@@ -37,6 +37,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 	ProjectSection(SolutionItems) = preProject
 		FontAwesomeLink.txt = FontAwesomeLink.txt
 		IdentityServerVersionErrorSolution.txt = IdentityServerVersionErrorSolution.txt
+		LoginIndex.txt = LoginIndex.txt
+		OcelotCodeExample.txt = OcelotCodeExample.txt
+		OcelotLink.txt = OcelotLink.txt
 		PortainerCmd.txt = PortainerCmd.txt
 		PortNumbers.txt = PortNumbers.txt
 		simplleCode.txt = simplleCode.txt
@@ -70,6 +73,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade.Comment", "Services\Comment\ETrade.Comment\ETrade.Comment.csproj", "{5F967E6A-D3CF-468F-B013-998AEBEEBA57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{BF024021-3873-4E5B-8A6C-188FB9012543}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{931EC829-90B7-4C19-B636-A90A892310FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade.OcelotGateway", "ApiGateway\ETrade.OcelotGateway\ETrade.OcelotGateway.csproj", "{F5825C5B-50EE-47D4-8FFC-CB5F3981F087}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{30B0D38A-91EE-4B04-B879-2A38DE81A25C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade.Payment", "Service\Payment\ETrade.Payment\ETrade.Payment.csproj", "{000D501B-B644-444A-9CBD-76D4A10C7AAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{A999391E-A532-4634-968D-5ED7B7F99F0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade.Images", "Services\Images\ETrade.Images\ETrade.Images.csproj", "{83EBC2F7-5C4B-455D-864A-D6F78B4E24EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +156,18 @@ Global
 		{5F967E6A-D3CF-468F-B013-998AEBEEBA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F967E6A-D3CF-468F-B013-998AEBEEBA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F967E6A-D3CF-468F-B013-998AEBEEBA57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5825C5B-50EE-47D4-8FFC-CB5F3981F087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5825C5B-50EE-47D4-8FFC-CB5F3981F087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5825C5B-50EE-47D4-8FFC-CB5F3981F087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5825C5B-50EE-47D4-8FFC-CB5F3981F087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{000D501B-B644-444A-9CBD-76D4A10C7AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{000D501B-B644-444A-9CBD-76D4A10C7AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{000D501B-B644-444A-9CBD-76D4A10C7AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{000D501B-B644-444A-9CBD-76D4A10C7AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83EBC2F7-5C4B-455D-864A-D6F78B4E24EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83EBC2F7-5C4B-455D-864A-D6F78B4E24EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83EBC2F7-5C4B-455D-864A-D6F78B4E24EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83EBC2F7-5C4B-455D-864A-D6F78B4E24EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -171,5 +198,10 @@ Global
 		{D7B1DBB8-BFE2-47BC-AAC3-963CE476798C} = {7194A3DB-8725-4EA1-834A-2CC237155A39}
 		{2B2808D8-C5E7-46AA-A4DE-0D988A41E6CB} = {7DDA9C17-4D2A-4C7A-8251-207E4A4B95AD}
 		{5F967E6A-D3CF-468F-B013-998AEBEEBA57} = {2B2808D8-C5E7-46AA-A4DE-0D988A41E6CB}
+		{F5825C5B-50EE-47D4-8FFC-CB5F3981F087} = {BF024021-3873-4E5B-8A6C-188FB9012543}
+		{30B0D38A-91EE-4B04-B879-2A38DE81A25C} = {7DDA9C17-4D2A-4C7A-8251-207E4A4B95AD}
+		{000D501B-B644-444A-9CBD-76D4A10C7AAD} = {30B0D38A-91EE-4B04-B879-2A38DE81A25C}
+		{A999391E-A532-4634-968D-5ED7B7F99F0E} = {7DDA9C17-4D2A-4C7A-8251-207E4A4B95AD}
+		{83EBC2F7-5C4B-455D-864A-D6F78B4E24EE} = {A999391E-A532-4634-968D-5ED7B7F99F0E}
 	EndGlobalSection
 EndGlobal

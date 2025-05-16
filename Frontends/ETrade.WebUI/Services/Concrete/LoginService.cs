@@ -1,8 +1,9 @@
-﻿using System.Security.Claims;
+﻿using ETrade.WebUI.Services.Abstracts;
+using System.Security.Claims;
 
-namespace ETrade.WebUI.Services
+namespace ETrade.WebUI.Services.Concrete
 {
-    public class LoginService:ILoginService
+    public class LoginService : ILoginService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 

@@ -1,4 +1,4 @@
-﻿namespace ETrade.WebUI.Services
+﻿namespace ETrade.WebUI.Services.Abstracts
 {
     public interface ILoginService
     {

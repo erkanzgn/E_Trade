@@ -1,4 +1,4 @@
-using ETrade.WebUI.Services;
+using ETrade.WebUI.Handlers;
 using ETrade.WebUI.Services.Abstracts;
 using ETrade.WebUI.Services.Concrete;
 using ETrade.WebUI.Settings;
@@ -36,6 +36,17 @@ builder.Services.AddHttpClient();
 
 builder.Services.Configure<ClientSettings>(
     builder.Configuration.GetSection("ClientSettings"));
+builder.Services.Configure<ServiceApiSettings>(
+    builder.Configuration.GetSection("ServiceApiSettings"));
+
+builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+
+var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+builder.Services.AddHttpClient<IUserService, UserService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdentityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
 
 var app = builder.Build();
 

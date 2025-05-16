@@ -1,0 +1,6 @@
+@ETrade.Payment_HostAddress = http://localhost:5011
+
+GET {{ETrade.Payment_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
