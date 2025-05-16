@@ -2,6 +2,7 @@ using AutoMapper; // Ensure this namespace is included
 using ETrade.Catalog.Services.AboutServices;
 using ETrade.Catalog.Services.BrandServices;
 using ETrade.Catalog.Services.CategoryServices;
+using ETrade.Catalog.Services.ContactServices;
 using ETrade.Catalog.Services.FeatureService;
 using ETrade.Catalog.Services.FeatureSliderServices;
 using ETrade.Catalog.Services.OfferDiscountServices;
@@ -21,8 +22,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Authority = builder.Configuration["IdentityServerUrl"];
     opt.Audience = "ResourceCatalog";
     opt.RequireHttpsMetadata = false;
-
-
 });
 
 
@@ -36,6 +35,7 @@ builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 // Explicitly specify the method to resolve ambiguity
 builder.Services.AddAutoMapper( Assembly.GetExecutingAssembly());

@@ -40,6 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 		PortainerCmd.txt = PortainerCmd.txt
 		PortNumbers.txt = PortNumbers.txt
 		simplleCode.txt = simplleCode.txt
+		UserExample.txt = UserExample.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{E3315A8C-0270-41BA-92FD-08028FA67588}"
@@ -67,6 +68,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comment", "Comment", "{2B2808D8-C5E7-46AA-A4DE-0D988A41E6CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade.Comment", "Services\Comment\ETrade.Comment\ETrade.Comment.csproj", "{5F967E6A-D3CF-468F-B013-998AEBEEBA57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{BF024021-3873-4E5B-8A6C-188FB9012543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

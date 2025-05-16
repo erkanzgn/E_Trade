@@ -6,6 +6,7 @@ namespace ETrade.WebUI.Controllers
     {
         public IActionResult Index()
         {
+
             return View();
         }
     }

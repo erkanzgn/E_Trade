@@ -2,6 +2,7 @@
 using ETrade.Catalog.Dtos.AboutDtos;
 using ETrade.Catalog.Dtos.BrandDtos;
 using ETrade.Catalog.Dtos.CategoryDtos;
+using ETrade.Catalog.Dtos.ContactDtos;
 using ETrade.Catalog.Dtos.FeatureDtos;
 using ETrade.Catalog.Dtos.FeatureSliderDtos;
 using ETrade.Catalog.Dtos.OfferDiscountDtos;
@@ -70,6 +71,11 @@ namespace ETrade.Catalog.Mapping
             CreateMap<About, UpdateAboutDto>().ReverseMap();
             CreateMap<About, GetByIdAboutDto>().ReverseMap();
             CreateMap<About, CreateAboutDto>().ReverseMap();
+
+            CreateMap<Contact, ResultContactDto>().ReverseMap();
+            CreateMap<Contact, UpdateContactDto>().ReverseMap();
+            CreateMap<Contact, GetByIdContactDto>().ReverseMap();
+            CreateMap<Contact, CreateContactDto>().ReverseMap();
         }
     }
 }

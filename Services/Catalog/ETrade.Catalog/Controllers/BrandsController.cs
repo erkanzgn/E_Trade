@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ETrade.Catalog.Controllers
 {
-    //[Authorize]
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BrandsController : ControllerBase

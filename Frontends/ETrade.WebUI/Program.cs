@@ -1,8 +1,41 @@
+using ETrade.WebUI.Services;
+using ETrade.WebUI.Services.Abstracts;
+using ETrade.WebUI.Services.Concrete;
+using ETrade.WebUI.Settings;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
+{
+    opt.LoginPath = "/Login/Index";
+    opt.LogoutPath = "/Login/LogOut";
+    opt.AccessDeniedPath = "/Pages/AccessDenied";
+    opt.Cookie.HttpOnly = true;
+    opt.Cookie.SameSite = SameSiteMode.Strict;
+    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    opt.Cookie.Name = "EtradeJwt";
+});
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+    opt =>
+    {
+        opt.LoginPath = "/Login/Index";
+        opt.ExpireTimeSpan = TimeSpan.FromDays(5);
+        opt.Cookie.Name = "ETradeCookie";
+        opt.SlidingExpiration = true;
+    });
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient<IIdentityService,IdentityService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+
+builder.Services.Configure<ClientSettings>(
+    builder.Configuration.GetSection("ClientSettings"));
 
 var app = builder.Build();
 
@@ -17,7 +50,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();

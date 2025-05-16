@@ -45,7 +45,7 @@ namespace ETrade.IdentityServer
                 ClientName="ETrade Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("etradesecret".Sha256())},
-                AllowedScopes={ "DiscountFullPermission" }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
 
             },
             //Manager
@@ -55,7 +55,7 @@ namespace ETrade.IdentityServer
                 ClientName="ETrade Manager User",
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("etradesecret".Sha256()) },
-                AllowedScopes={ "CatalogReadPermission" , "CatalogReadPermission" }
+                AllowedScopes={ "CatalogReadPermission" , "CatalogFullPermission", "BasketFullPermission" }
 
             },
             //Admin
