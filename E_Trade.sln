@@ -35,6 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade.IdentityServer", "Id
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{917B3523-A01E-464C-A9F4-BB070DEDAADF}"
 	ProjectSection(SolutionItems) = preProject
+		ClientCrendetialTokenExample.txt = ClientCrendetialTokenExample.txt
 		FontAwesomeLink.txt = FontAwesomeLink.txt
 		IdentityServerVersionErrorSolution.txt = IdentityServerVersionErrorSolution.txt
 		LoginIndex.txt = LoginIndex.txt

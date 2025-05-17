@@ -1,31 +1,23 @@
 ﻿using ETrade.DtoLayer.CatalogDtos.FeatureDtos;
+using ETrade.WebUI.Services.CatalogServices.FeatureServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace ETrade.WebUI.ViewComponents.DefaultViewComponents
 {
-    public class _FeatureDefaultComponentPartial:ViewComponent
+    public class _FeatureDefaultComponentPartial : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IFeatureService _featureService;
 
-        public _FeatureDefaultComponentPartial(IHttpClientFactory httpClientFactory)
+        public _FeatureDefaultComponentPartial(IFeatureService featureService)
         {
-            _httpClientFactory = httpClientFactory;
+            _featureService = featureService;
         }
-
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7074/api/Features");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(jsonData);
-                return View(values);
-            }
-
-            return View();
+            var values = await _featureService.GetAllFeatureAsync();
+            return View(values);
         }
 
     }

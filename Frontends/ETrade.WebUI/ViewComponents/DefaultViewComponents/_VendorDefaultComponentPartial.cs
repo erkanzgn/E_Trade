@@ -1,4 +1,5 @@
 ﻿using ETrade.DtoLayer.CatalogDtos.BrandDtos;
+using ETrade.WebUI.Services.CatalogServices.BrandServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -6,26 +7,18 @@ namespace ETrade.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _VendorDefaultComponentPartial:ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
 
-        public _VendorDefaultComponentPartial(IHttpClientFactory httpClientFactory)
+        private readonly IBrandService _brandService;
+
+        public _VendorDefaultComponentPartial(IBrandService brandService)
         {
-            _httpClientFactory = httpClientFactory;
+            _brandService = brandService;
         }
-
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7074/api/Brands");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultBrandDto>>(jsonData);
-                return View(values);
-            }
-
-            return View();
+            var values = await _brandService.GetAllBrandAsync();
+            return View(values);
         }
 
     }

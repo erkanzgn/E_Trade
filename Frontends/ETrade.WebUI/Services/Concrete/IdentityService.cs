@@ -1,7 +1,7 @@
-﻿using Duende.IdentityModel.Client;
-using ETrade.DtoLayer.IdentityDtos.LoginDtos;
+﻿using ETrade.DtoLayer.IdentityDtos.LoginDtos;
 using ETrade.WebUI.Services.Abstracts;
 using ETrade.WebUI.Settings;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Options;

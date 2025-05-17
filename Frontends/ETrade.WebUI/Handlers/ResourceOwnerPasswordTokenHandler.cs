@@ -1,10 +1,9 @@
-﻿
-using ETrade.WebUI.Services.Abstracts;
+﻿using ETrade.WebUI.Services.Abstracts;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Net.Http.Headers;
 using System.Net;
-using Duende.IdentityModel.Client;
+
 
 namespace ETrade.WebUI.Handlers
 {
@@ -23,7 +22,7 @@ namespace ETrade.WebUI.Handlers
         {
             var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            //BaK
+      
             var response = await base.SendAsync(request, cancellationToken);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {

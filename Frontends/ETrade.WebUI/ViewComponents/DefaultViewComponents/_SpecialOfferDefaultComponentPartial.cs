@@ -1,31 +1,24 @@
 ﻿
 using ETrade.DtoLayer.CatalogDtos.SpecialOfferDtos;
+using ETrade.WebUI.Services.CatalogServices.SpecialOfferServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace ETrade.WebUI.ViewComponents.DefaultViewComponents
 {
-    public class _SpecialOfferDefaultComponentPartial:ViewComponent
+    public class _SpecialOfferDefaultComponentPartial : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ISpecialOfferService _specialOfferService;
 
-        public _SpecialOfferDefaultComponentPartial(IHttpClientFactory httpClientFactory)
+        public _SpecialOfferDefaultComponentPartial(ISpecialOfferService specialOfferService)
         {
-            _httpClientFactory = httpClientFactory;
+            _specialOfferService = specialOfferService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7074/api/SpecialOffers");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultSpecialOfferDto>>(jsonData);
-                return View(values);
-            }
-
-            return View();
+            var values = await _specialOfferService.GetAllSpecialOfferAsync();
+            return View(values);
         }
 
     }

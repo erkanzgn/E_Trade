@@ -14,13 +14,11 @@ namespace ETrade.WebUI.Controllers
     public class LoginController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly ILoginService _loginService;
         private readonly IIdentityService _identityService;
 
         public LoginController(IHttpClientFactory httpClientFactory, ILoginService loginService, IIdentityService identityService)
         {
             _httpClientFactory = httpClientFactory;
-            _loginService = loginService;
             _identityService = identityService;
         }
         [HttpGet]
@@ -35,13 +33,5 @@ namespace ETrade.WebUI.Controllers
             return View();
         }
 
-        //[HttpPost]
-        public async Task<IActionResult> SignIn(SignInDto signInDto) 
-        {
-            signInDto.Username = "erkan02";
-            signInDto.Password = "Erkan.65";
-            await _identityService.SingIn(signInDto);
-            return RedirectToAction("Index", "User");
-        }
     }
 }

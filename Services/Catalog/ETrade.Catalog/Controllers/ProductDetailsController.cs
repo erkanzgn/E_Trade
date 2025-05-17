@@ -32,7 +32,7 @@ namespace ETrade.Catalog.Controllers
             return Ok(values);
         }
 
-        [HttpGet("GetByProductIdProductDetail")]
+        [HttpGet("GetByProductIdProductDetail/{id}")]
         public async Task<IActionResult> GetByProductIdProductDetail(string id)
         {
             var values = await _productDetailService.GetByProductIdProductDetailAsync(id);
