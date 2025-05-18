@@ -35,10 +35,11 @@ builder.Services.AddSingleton<RedisService>(sp =>
 });
 
 //Proje seviyesinde Authentication iþlemi
-builder.Services.AddControllers(opt=>
+builder.Services.AddControllers(opt =>
 {
     opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
 });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -1,6 +1,7 @@
 ﻿using ETrade.Basket.Dtos;
 using ETrade.Basket.LoginServices;
 using ETrade.Basket.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace ETrade.Basket.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class BasketsController : ControllerBase
     {
         private readonly IBasketService _basketService;

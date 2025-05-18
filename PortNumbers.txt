@@ -1,6 +1,6 @@
 Ocleot ---->localhost:5000
 Idenitiy --> localhost:5001
-Catalog --> localhost:7074               (sorun çýkardý)(7070)
+Catalog --> localhost:7070               (sorun çýkardý)(7070)//Deðiþebilir // 7074 boþ
 Discount --> localhost:7071
 Order --> localhost:7072
 Cargo --> localhost:7073

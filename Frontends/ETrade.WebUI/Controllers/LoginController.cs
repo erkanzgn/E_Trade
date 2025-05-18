@@ -26,12 +26,35 @@ namespace ETrade.WebUI.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Index(CreateLoginDto loginDto)
         {
+            if (!ModelState.IsValid)
+                return View(loginDto);
 
-            return View();
+            var result = await _identityService.SingIn(new SignInDto
+            {
+                Username = loginDto.UserName,
+                Password = loginDto.Password
+            });
+
+            if (!result)
+            {
+                ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı.");
+                return View(loginDto);
+            }
+
+            return RedirectToAction("Index", "User");
         }
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Index(CreateLoginDto loginDto)
+        //{
+
+        //    return View();
+        //}
 
     }
 }

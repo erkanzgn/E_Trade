@@ -1,8 +1,10 @@
 using ETrade.WebUI.Handlers;
 using ETrade.WebUI.Services.Abstracts;
+using ETrade.WebUI.Services.BasketServices;
 using ETrade.WebUI.Services.CatalogServices.AboutServices;
 using ETrade.WebUI.Services.CatalogServices.BrandServices;
 using ETrade.WebUI.Services.CatalogServices.CategoryServices;
+using ETrade.WebUI.Services.CatalogServices.ContactServices;
 using ETrade.WebUI.Services.CatalogServices.FeatureServices;
 using ETrade.WebUI.Services.CatalogServices.OfferDiscountServices;
 using ETrade.WebUI.Services.CatalogServices.ProductDetailServices;
@@ -10,7 +12,10 @@ using ETrade.WebUI.Services.CatalogServices.ProductImageServices;
 using ETrade.WebUI.Services.CatalogServices.ProductServices;
 using ETrade.WebUI.Services.CatalogServices.SliderServices;
 using ETrade.WebUI.Services.CatalogServices.SpecialOfferServices;
+using ETrade.WebUI.Services.CommentServices;
 using ETrade.WebUI.Services.Concrete;
+using ETrade.WebUI.Services.DiscountServices;
+using ETrade.WebUI.Services.OrderServices.OrderAddressServices;
 using ETrade.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -48,10 +53,31 @@ builder.Services.AddScoped<ClientCredentialTokenHandler>();
 builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
+
+
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+/////////////////////////////////////////////////
+///
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
@@ -102,6 +128,17 @@ builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt 
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
 
 var app = builder.Build();
 

@@ -9,5 +9,7 @@ namespace ETrade.Discount.Services
         Task UpdateDiscountCouponAsync(UpdateDiscountCouponDto updateCouponDto);
         Task DeleteDiscountCouponAsync(int couponId);
         Task<GetByIdDiscountCouponDto> GetByIdDiscountCouponAsync(int couponId);
+        Task<ResultDiscountCouponDto> GetCodeDetailByCodeAsync(string code);
+        int GetDiscountCouponRate(string code);
     }
 }

@@ -19,26 +19,27 @@ namespace ETrade.Discount.Services
                  " (@code,@rate,@isActive,@validDate )";
             var parameters = new DynamicParameters();
             parameters.Add("@code", createCouponDto.Code);
-            parameters.Add("@rate",createCouponDto.Rate);
-            parameters.Add("@isActive",createCouponDto.IsActive);
-            parameters.Add("@validDate",createCouponDto.ValidDate);
-            using (var connnection = _dapperContext.CreateConnection()) { 
-            
-                await connnection.ExecuteAsync(query,parameters);
-            
+            parameters.Add("@rate", createCouponDto.Rate);
+            parameters.Add("@isActive", createCouponDto.IsActive);
+            parameters.Add("@validDate", createCouponDto.ValidDate);
+            using (var connnection = _dapperContext.CreateConnection())
+            {
+
+                await connnection.ExecuteAsync(query, parameters);
+
             }
-                
+
         }
 
         public async Task DeleteDiscountCouponAsync(int couponId)
         {
-            string query = "delete from Coupons where CouponId=@couponId"; 
+            string query = "delete from Coupons where CouponId=@couponId";
             var parameters = new DynamicParameters();
             parameters.Add("couponId", couponId);
             using (var connnection = _dapperContext.CreateConnection())
             {
 
-                await connnection.ExecuteAsync(query,parameters);
+                await connnection.ExecuteAsync(query, parameters);
 
             }
         }
@@ -48,7 +49,7 @@ namespace ETrade.Discount.Services
             string query = "select * from Coupons ";
             using (var connection = _dapperContext.CreateConnection())
             {
-                var values=await connection.QueryAsync<ResultDiscountCouponDto>(query);
+                var values = await connection.QueryAsync<ResultDiscountCouponDto>(query);
                 return values.ToList();
             }
 
@@ -58,10 +59,39 @@ namespace ETrade.Discount.Services
         {
             string query = "select * from Coupons where CouponId=@couponId";
             var parameters = new DynamicParameters();
-            parameters.Add("@couponId",couponId);
-            using (var connection = _dapperContext.CreateConnection()) { 
-            
-                var values=await connection.QueryFirstOrDefaultAsync<GetByIdDiscountCouponDto>(query,parameters);
+            parameters.Add("@couponId", couponId);
+            using (var connection = _dapperContext.CreateConnection())
+            {
+
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIdDiscountCouponDto>(query, parameters);
+                return values;
+            }
+        }
+
+        public async Task<ResultDiscountCouponDto> GetCodeDetailByCodeAsync(string code)
+        {
+            string query = "Select * from Coupons where Code=@code";
+            var parameters = new DynamicParameters();
+            parameters.Add("@code", code);
+
+            using (var connection = _dapperContext.CreateConnection())
+            {
+
+                var values = await connection.QueryFirstOrDefaultAsync<ResultDiscountCouponDto>(query, parameters);
+                return values;
+            }
+        }
+
+        public int GetDiscountCouponRate(string code)
+        {
+            string query = "Select Rate from Coupons where Code=@code";
+            var parameters = new DynamicParameters();
+            parameters.Add("@code", code);
+
+            using (var connection = _dapperContext.CreateConnection())
+            {
+
+                var values =  connection.QueryFirstOrDefault<int>(query, parameters);
                 return values;
             }
         }
@@ -74,7 +104,7 @@ namespace ETrade.Discount.Services
             parameters.Add("@rate", updateCouponDto.Rate);
             parameters.Add("@isActive", updateCouponDto.IsActive);
             parameters.Add("@validDate", updateCouponDto.ValidDate);
-            parameters.Add("@couponId",updateCouponDto.CouponId);
+            parameters.Add("@couponId", updateCouponDto.CouponId);
             using (var connnection = _dapperContext.CreateConnection())
             {
 

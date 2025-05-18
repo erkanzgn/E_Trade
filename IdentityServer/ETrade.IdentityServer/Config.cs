@@ -53,7 +53,8 @@ namespace ETrade.IdentityServer
                 ClientName="ETrade Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("etradesecret".Sha256())},
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "OcelottFullPermission", "CommentFullPermission" , "ImageFullPermission" }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "OcelottFullPermission", "CommentFullPermission" , "ImageFullPermission",
+                "CommentFullPermission"}
 
             },
             //Manager
@@ -64,7 +65,7 @@ namespace ETrade.IdentityServer
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("etradesecret".Sha256()) },
                 AllowedScopes={ "CatalogReadPermission" , "CatalogFullPermission", "BasketFullPermission", "OcelottFullPermission" , "PaymentFullPermission"
-                ,"ImageFullPermission",
+                ,"ImageFullPermission","CommentFullPermission","DiscountFullPermission","OrderFullPermission",
                       IdentityServerConstants.LocalApi.ScopeName,
                  IdentityServerConstants.StandardScopes.Email,
                  IdentityServerConstants.StandardScopes.OpenId,
