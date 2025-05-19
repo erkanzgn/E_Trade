@@ -143,9 +143,27 @@
           "Port": 7078
         }
       ]
+    },
+    //Message MicroService
+    {
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamPathTemplate": "/services/message/{everything}",
+      "UpstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "OcelotAuthenticationSheme",
+        "AllowedScopes": [ "MessageFullPermission" ]
+      },
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7079
+        }
+      ]
     }
-  ],
 
+  ],
 "GlobalConfiguration": {
   "BaseUrl": "http://localhost:5000"
 } }

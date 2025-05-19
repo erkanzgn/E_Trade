@@ -16,6 +16,7 @@ using ETrade.WebUI.Services.CommentServices;
 using ETrade.WebUI.Services.Concrete;
 using ETrade.WebUI.Services.DiscountServices;
 using ETrade.WebUI.Services.OrderServices.OrderAddressServices;
+using ETrade.WebUI.Services.OrderServices.OrderOrderingServices;
 using ETrade.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -76,8 +77,16 @@ builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+builder.Services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
 /////////////////////////////////////////////////
+//////////////////////////////////////////////////
 ///
+
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {

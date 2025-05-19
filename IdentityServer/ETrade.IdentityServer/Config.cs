@@ -20,6 +20,7 @@ namespace ETrade.IdentityServer
             new ApiResource("ResourceComment"){Scopes={"CommentFullPermission"}},
             new ApiResource("ResourcePayment"){Scopes={"PaymentFullPermission"}},
             new ApiResource("ResourceImage"){Scopes={"ImageFullPermission"}},
+            new ApiResource("ResourceMessage"){Scopes={"MessageFullPermission"}},
             new ApiResource("ResourceOcelot"){Scopes={"OcelottFullPermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
@@ -41,6 +42,7 @@ namespace ETrade.IdentityServer
             new ApiScope("CommentFullPermission","Full authority for comment operations"),
             new ApiScope("PaymentFullPermission","Full authority for payment operations"),
             new ApiScope("ImageFullPermission","Full authority for image operations"),
+            new ApiScope("MessageFullPermission","Full authority for message operations"),
             new ApiScope("OcelottFullPermission","Full authority for ocelot operations"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
@@ -65,7 +67,7 @@ namespace ETrade.IdentityServer
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("etradesecret".Sha256()) },
                 AllowedScopes={ "CatalogReadPermission" , "CatalogFullPermission", "BasketFullPermission", "OcelottFullPermission" , "PaymentFullPermission"
-                ,"ImageFullPermission","CommentFullPermission","DiscountFullPermission","OrderFullPermission",
+                ,"ImageFullPermission","CommentFullPermission","DiscountFullPermission","OrderFullPermission","MessageFullPermission",
                       IdentityServerConstants.LocalApi.ScopeName,
                  IdentityServerConstants.StandardScopes.Email,
                  IdentityServerConstants.StandardScopes.OpenId,
