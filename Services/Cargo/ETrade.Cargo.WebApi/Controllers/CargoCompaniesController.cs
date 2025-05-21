@@ -20,9 +20,9 @@ namespace ETrade.Cargo.WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult CargoCompanyList()
+        public  IActionResult CargoCompanyList()
         {
-            var values = _companyService.TGetAll();
+            var values =  _companyService.TGetAll();
             return Ok(values);
         }
         [HttpPost]

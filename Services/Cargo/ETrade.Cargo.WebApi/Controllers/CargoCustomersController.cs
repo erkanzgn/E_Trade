@@ -44,6 +44,7 @@ namespace ETrade.Cargo.WebApi.Controllers
                 Name = createCargoCustomerDto.Name,
                 Surname = createCargoCustomerDto.Surname,
                 Phone = createCargoCustomerDto.Phone,
+                UserCustomerId = createCargoCustomerDto.UserCustomerId,
 
             };
             _customerService.TInsert(cargoCustomer);
@@ -67,9 +68,19 @@ namespace ETrade.Cargo.WebApi.Controllers
                 Name = updateCargoCustomerDto.Name,
                 Surname = updateCargoCustomerDto.Surname,
                 Phone = updateCargoCustomerDto.Phone,
+                UserCustomerId = updateCargoCustomerDto.UserCustomerId,
             };
             _customerService.TUpdate(cargoCustomer);
             return Ok("Kargo Müşteri Başarıyla Güncellendi");
         }
+
+        [HttpGet("GetCargoCustomerById")]
+        public IActionResult GetCargoCustomerById(string id)
+        {
+            return Ok(_customerService.TGetCargoCustomerById(id));
+
+        }
+
+
     }
 }

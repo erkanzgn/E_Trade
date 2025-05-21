@@ -11,6 +11,7 @@ namespace ETrade.Message.Services
         Task UpdateMessageAsync(UpdateMessageDto updateMessage);
         Task DeleteMessageAsync(int id);
         Task<GetByIdMessageDto> GetByIdMessageAsync(int id);
+        Task<int> GetTotalMessageCount();
 
     }
 }

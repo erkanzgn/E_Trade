@@ -19,21 +19,21 @@ namespace ETrade.Message.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllMessage()
         {
-            var values=await _userMessageService.GetAllMessageAsync();
+            var values = await _userMessageService.GetAllMessageAsync();
             return Ok(values);
         }
-        [HttpGet("GetMessageSendBox")]
+        [HttpGet("GetMessageSendbox/{id}")]
         public async Task<IActionResult> GetMessageSendbox(string id)
         {
-            var values =await  _userMessageService.GetSendboxMessageAsync(id);
+            var values = await _userMessageService.GetSendboxMessageAsync(id);
             return Ok(values);
         }
-        [HttpGet("GetMessageInbox")]
+        [HttpGet("GetMessageInbox/{id}")]
         public async Task<IActionResult> GetMessageInbox(string id)
         {
             var values = await _userMessageService.GetInboxMessageAsync(id);
             return Ok(values);
-        }
+        }    
 
         [HttpPost]
         public async Task<IActionResult> CreateMessageAsync(CreateMessageDto createMessageDto)
@@ -52,6 +52,13 @@ namespace ETrade.Message.Controllers
         {
             await _userMessageService.UpdateMessageAsync(updateMessageDto);
             return Ok("Mesaj başarıyla güncellendi");
+        }  
+        [HttpGet("GetTotalMessageCount")]
+        public async Task<IActionResult> GetTotalMessageCount()
+        {
+            int values = await _userMessageService.GetTotalMessageCount();
+            return Ok(values);
         }
+
     }
 }

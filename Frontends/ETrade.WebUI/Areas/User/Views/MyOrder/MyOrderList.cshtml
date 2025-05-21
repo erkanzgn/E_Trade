@@ -16,18 +16,10 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            #
-                                        </th>
-                                        <th>
-                                            Toplam Fiyat
-                                        </th>
-                                        <th>
-                                            Sipariş Tarihi
-                                        </th>
-                                        <th>
-                                            Sipariş Detayları 
-                                        </th>
+                                        <th>  #  </th>
+                                        <th> Toplam Fiyat </th>
+                                        <th> Sipariş Tarihi </th>
+                                        <th> Sipariş Detayları </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,18 +27,10 @@
                                     {
                                         count++;
                                         <tr>
-                                        <td>
-                                            @count
-                                        </td>
-                                        <td>
-                                           @item.TotalPrice
-                                        </td>
-                                        <td>
-                                                @(((DateTime)item.OrderDate).ToString("dd-MMM-yyyy"))
-                                        </td>
-                                        <td>
-                                          <a href="#" class="btn btn-warning">Sipariş Detayları</a>
-                                        </td>
+                                        <td> @count</td>
+                                        <td>@item.TotalPrice</td>
+                                        <td> @(((DateTime)item.OrderDate).ToString("dd-MMM-yyyy"))</td>
+                                        <td><a href="#" class="btn btn-warning">Sipariş Detayları</a></td>
                                     </tr>
                                     }
                                 </tbody>

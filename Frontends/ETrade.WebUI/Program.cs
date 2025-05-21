@@ -1,6 +1,8 @@
 using ETrade.WebUI.Handlers;
 using ETrade.WebUI.Services.Abstracts;
 using ETrade.WebUI.Services.BasketServices;
+using ETrade.WebUI.Services.CargoServices.CargoCompanyServices;
+using ETrade.WebUI.Services.CargoServices.CargoCustomerServices;
 using ETrade.WebUI.Services.CatalogServices.AboutServices;
 using ETrade.WebUI.Services.CatalogServices.BrandServices;
 using ETrade.WebUI.Services.CatalogServices.CategoryServices;
@@ -15,8 +17,10 @@ using ETrade.WebUI.Services.CatalogServices.SpecialOfferServices;
 using ETrade.WebUI.Services.CommentServices;
 using ETrade.WebUI.Services.Concrete;
 using ETrade.WebUI.Services.DiscountServices;
+using ETrade.WebUI.Services.MessageServices;
 using ETrade.WebUI.Services.OrderServices.OrderAddressServices;
 using ETrade.WebUI.Services.OrderServices.OrderOrderingServices;
+using ETrade.WebUI.Services.UserIdentityServices;
 using ETrade.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -82,6 +86,25 @@ builder.Services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdentityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 /////////////////////////////////////////////////
 //////////////////////////////////////////////////
@@ -147,6 +170,9 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+
+
 
 
 var app = builder.Build();

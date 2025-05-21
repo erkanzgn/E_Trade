@@ -23,16 +23,17 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../pages/charts/chartjs.html">
-                <i class="mdi mdi-chart-pie menu-icon"></i>
-                <span class="menu-title">Siparişlerim</span>
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <i class="mdi mdi-palette menu-icon"></i>
+                <span class="menu-title">Siparişler</span>
+                <i class="menu-arrow"></i>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
-                <i class="mdi mdi-grid-large menu-icon"></i>
-                <span class="menu-title">Geçmiş Siparişlerim</span>
-            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="/User/Message/Inbox">Siparişler</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/User/Message/sendbox">Geçmiş Siparişler</a></li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../../pages/icons/mdi.html">
@@ -47,10 +48,17 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../pages/icons/mdi.html">
-                <i class="mdi mdi-emoticon menu-icon"></i>
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <i class="mdi mdi-palette menu-icon"></i>
                 <span class="menu-title">Mesajlar</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="/User/Message/Inbox">Gelen Mesajlar</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/User/Message/sendbox">Giden Mesajlar</a></li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../../pages/icons/mdi.html">

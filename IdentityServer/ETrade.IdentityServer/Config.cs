@@ -67,7 +67,7 @@ namespace ETrade.IdentityServer
                 AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("etradesecret".Sha256()) },
                 AllowedScopes={ "CatalogReadPermission" , "CatalogFullPermission", "BasketFullPermission", "OcelottFullPermission" , "PaymentFullPermission"
-                ,"ImageFullPermission","CommentFullPermission","DiscountFullPermission","OrderFullPermission","MessageFullPermission",
+                ,"ImageFullPermission","CommentFullPermission","DiscountFullPermission","OrderFullPermission","MessageFullPermission","CargoFullPermission",
                       IdentityServerConstants.LocalApi.ScopeName,
                  IdentityServerConstants.StandardScopes.Email,
                  IdentityServerConstants.StandardScopes.OpenId,

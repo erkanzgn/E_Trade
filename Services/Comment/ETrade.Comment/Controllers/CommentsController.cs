@@ -61,5 +61,28 @@ namespace ETrade.Comment.Controllers
             var value =_context.UserComments.Where(x=>x.ProductId==id).ToList();
             return Ok(value);
         }
+        [HttpGet("ActiveCommentCount")]
+        public IActionResult ActiveCommentCount()
+        {
+            int value = _context.UserComments.Where(x=>x.Status==true).Count();
+            return Ok(value);
+        }
+        [HttpGet("PassiveCommentCount")]
+        public IActionResult PassiveCommentCount()
+        {
+            int value = _context.UserComments.Where(x => x.Status == false).Count();
+            return Ok(value);
+
+        }
+        [HttpGet("GetTotalCommentCount")]
+        public IActionResult GetTotalCommentCount()
+        {
+            int value = _context.UserComments.Count();
+            return Ok(value);
+
+        }
+
+
+
     }
 }

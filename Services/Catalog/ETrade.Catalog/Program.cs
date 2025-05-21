@@ -10,6 +10,7 @@ using ETrade.Catalog.Services.ProductDetailServices;
 using ETrade.Catalog.Services.ProductImageServices;
 using ETrade.Catalog.Services.ProductServices;
 using ETrade.Catalog.Services.SpecialOfferServices;
+using ETrade.Catalog.Services.StatisticServices;
 using ETrade.Catalog.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -36,6 +37,7 @@ builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 
 // Explicitly specify the method to resolve ambiguity
 builder.Services.AddAutoMapper( Assembly.GetExecutingAssembly());

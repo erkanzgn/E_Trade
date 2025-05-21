@@ -12,9 +12,16 @@ namespace ETrade.Cargo.DataAccessLayer.EntityFramework
 {
     public class EfCargoCustomerDal:GenericRepository<CargoCustomer>, ICargoCustomerDal
     {
-        public EfCargoCustomerDal(CargoContext cargoContext):base(cargoContext) 
+        private readonly CargoContext _context;
+        public EfCargoCustomerDal(CargoContext cargoContext, CargoContext context) : base(cargoContext)
         {
-            
+            _context = context;
+        }
+
+        public CargoCustomer GetCargocustomerById(string id)
+        {
+            var values=_context.CargoCustomers.Where(x=>x.UserCustomerId==id).FirstOrDefault();
+            return values;
         }
     }
 }

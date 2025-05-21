@@ -58,6 +58,12 @@ namespace ETrade.Message.Services
             return _mapper.Map<List<ResultSendboxMessageDto>>(values);
         }
 
+        public async Task<int> GetTotalMessageCount()
+        {
+           int value = await _messageContext.UserMessages.CountAsync();
+            return value;
+        }
+
         public async Task UpdateMessageAsync(UpdateMessageDto updateMessage)
         {
             var values = _mapper.Map<UserMessage>(updateMessage);

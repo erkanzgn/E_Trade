@@ -1,0 +1,48 @@
+﻿@model GetCargoCustomerByIdDto
+@{
+    ViewData["Title"] = "UserAddressInfo";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="bs-example" data-example-id="bordered-table">
+                  
+                        <br /><br /><br />
+                        <h3>Kullanıcı Adress ve iletişim  Bilgisi</h3>
+                        <div class="alert alert-info">KullanıcıId:@Model.UserCustomerId</div>
+                        <div class="alert alert-warning">Kulanıcı Ad Soyad:@Model.Name @Model.Surname</div>
+                        <div class="alert alert-info">Ad:@Model.Name</div>
+                        <div class="alert alert-warning">Telefon:@Model.Phone</div>
+                        <div class="alert alert-info">Email Adresi:@Model.Email</div>
+                        <div class="alert alert-warning">İlce/İl:@Model.District - @Model.City</div>
+                        <div class="alert alert-info">Adres:@Model.Address</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+<br /> <br />
+@* <div class="col-lg-5">
+    <div class="chart-box">
+        <h4>Kullanıcı Adress ve iletişim  Bilgisi</h4>
+        <div class="message-widget">
+            <a href="#">
+                <div class="user-img pull-left"> <img src="dist/img/img1.jpg" class="img-circle img-responsive" alt="User Image"> <span class="profile-status online pull-right"></span> </div>
+                <div class="mail-contnet">
+                    <div class="alert alert-info">KullanıcıId:@Model.CargoCustomerId</div>
+                    <div class="alert alert-warning">Kulanıcı Ad Soyad:@Model.Name @Model.Surname</div>
+                    <div class="alert alert-info">Ad:@Model.Name</div>
+                    <div class="alert alert-warning">Telefon:@Model.Phone</div>
+                    <div class="alert alert-info">Email Adresi:@Model.Email</div>
+                    <div class="alert alert-warning">İlce/İl:@Model.District - @Model.City</div>
+                    <div class="alert alert-info">Adres:@Model.Address</div>
+                    
+                </div>
+            </a>     
+        </div>
+    </div>
+</ *@div>

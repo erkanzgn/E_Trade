@@ -11,5 +11,6 @@ namespace ETrade.Discount.Services
         Task<GetByIdDiscountCouponDto> GetByIdDiscountCouponAsync(int couponId);
         Task<ResultDiscountCouponDto> GetCodeDetailByCodeAsync(string code);
         int GetDiscountCouponRate(string code);
+        Task<int> GetDiscountCouponCount();
     }
 }
