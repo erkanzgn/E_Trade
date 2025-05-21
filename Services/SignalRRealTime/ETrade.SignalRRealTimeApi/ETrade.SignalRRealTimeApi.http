@@ -1,0 +1,6 @@
+@ETrade.SignalRRealTimeApi_HostAddress = http://localhost:5086
+
+GET {{ETrade.SignalRRealTimeApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

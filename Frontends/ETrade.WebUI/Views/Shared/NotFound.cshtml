@@ -1,0 +1,87 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Not Found</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffc600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 250px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 5px 5px 0 #b98c00;
+            position: relative;
+        }
+
+            .error-code::after {
+                content: "";
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 30px;
+                height: 30px;
+                background-color: #8c6f00;
+                border-radius: 50%;
+            }
+
+        .error-message {
+            font-size: 24px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .error-description {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .home-button {
+            margin-top: 30px;
+            background-color: #222;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+            .home-button:hover {
+                background-color: #444;
+            }
+    </style>
+</head>
+<body>
+    <div class="error-code">404</div>
+    <div class="error-message">Bir Şeyler Ters Gitti</div>
+    <div class="error-description">
+        Aradığınız sayfa taşınmış, kaldırılmış, adı değiştirilmiş veya hiç var olmamış olabilir.
+    </div>
+
+    <button class="home-button" onclick="window.location.href='@Url.Action("Index", "Default")'">Anasayfa</button>
+
+</body>
+</html>

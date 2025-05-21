@@ -21,7 +21,8 @@ namespace ETrade.Message.Controllers
         {
             var values = await _userMessageService.GetAllMessageAsync();
             return Ok(values);
-        }
+        }  
+
         [HttpGet("GetMessageSendbox/{id}")]
         public async Task<IActionResult> GetMessageSendbox(string id)
         {
@@ -60,5 +61,11 @@ namespace ETrade.Message.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetTotalMessageCountByReciverId/{id}")]
+        public async Task<IActionResult> GetTotalMessageCountByReciverId(string id)
+        {
+            var values = await _userMessageService.GetTotalMessageCountByReciverId(id);
+            return Ok(values);
+        }
     }
 }

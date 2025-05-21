@@ -118,6 +118,7 @@ builder.Services.AddHttpClient<IUserStatisticService, UserStatisticService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+
 /////////////////////////////////////////////////
 //////////////////////////////////////////////////
 ///
@@ -200,6 +201,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
 app.UseStaticFiles();
 app.UseAuthentication();
@@ -218,6 +220,10 @@ app.UseEndpoints(endpoints =>
       name: "areas",
       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
+    endpoints.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Default}/{action=Index}/{id?}"
+);
 });
 
 

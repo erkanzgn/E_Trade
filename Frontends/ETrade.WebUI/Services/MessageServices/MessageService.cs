@@ -49,6 +49,20 @@ namespace ETrade.WebUI.Services.MessageServices
             return values ?? new List<ResultSendboxMessageDto>();
         }
 
+        public async Task<int> GetTotalMessageCount()
+        {
+            var responseMessage = await _httpClient.GetAsync($"UserMessages/GetTotalMessageCount/");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
+
+        public async Task<int> GetTotalMessageCountByReciverId(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync($"UserMessages/GetTotalMessageCountByReciverId/"+id);
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
+
 
         //////http://localhost:7079/api/UserMessages/GetMessageInbox?id=b
 

@@ -64,6 +64,12 @@ namespace ETrade.Message.Services
             return value;
         }
 
+        public async Task<int> GetTotalMessageCountByReciverId(string id)
+        {
+          var values=await _messageContext.UserMessages.Where(x=>x.ReciverId==id).CountAsync();
+         return values;
+        }
+
         public async Task UpdateMessageAsync(UpdateMessageDto updateMessage)
         {
             var values = _mapper.Map<UserMessage>(updateMessage);

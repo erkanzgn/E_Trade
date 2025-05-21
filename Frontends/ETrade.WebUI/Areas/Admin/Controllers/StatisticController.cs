@@ -1,5 +1,6 @@
 ﻿using ETrade.WebUI.Services.CommentServices;
 using ETrade.WebUI.Services.DiscountServices;
+using ETrade.WebUI.Services.MessageServices;
 using ETrade.WebUI.Services.StatisticServices.CatalogStatisticServices;
 using ETrade.WebUI.Services.StatisticServices.UserStatisticServices;
 using Microsoft.AspNetCore.Mvc;
@@ -13,13 +14,16 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
         private readonly IUserStatisticService _userStatisticService;
         private readonly ICommentService _commentService;
         private readonly IDiscountService _discountService;
+        private readonly IMessageService _messageService;
 
-        public StatisticController(ICatalogStatisticService catalogStatisticService, IUserStatisticService userStatisticService, ICommentService commentService, IDiscountService discountService)
+        public StatisticController(ICatalogStatisticService catalogStatisticService, IUserStatisticService userStatisticService, 
+            ICommentService commentService, IDiscountService discountService, IMessageService messageService)
         {
             _catalogStatisticService = catalogStatisticService;
             _userStatisticService = userStatisticService;
             _commentService = commentService;
             _discountService = discountService;
+            _messageService = messageService;
         }
 
         public async  Task<IActionResult> Index()
@@ -37,6 +41,9 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             var getPassiveCommentCount = await _commentService.GetPassiveCommentCount();
 
             var getDiscountCouponCount = await _discountService.GetDiscountCouponCount();
+
+            var getMessageCount=await _messageService.GetTotalMessageCount();
+           
           //  var getProductAvgPrice = await _catalogStatisticService.GetProductAvgPrice();
             ViewBag.getBrandCount= getBrandCount;
             ViewBag.getProductCount = getProductCount;
@@ -48,6 +55,7 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             ViewBag.getPassiveCommentCount = getPassiveCommentCount;
             ViewBag.getTotalCommentCount = getTotalCommentCount;
             ViewBag.getDiscountCouponCount = getDiscountCouponCount;
+            ViewBag.getMessageCount = getMessageCount;
           //  ViewBag.getProductAvgPrice = getProductAvgPrice;
             return View();
         }

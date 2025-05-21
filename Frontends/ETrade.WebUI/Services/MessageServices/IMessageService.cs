@@ -7,6 +7,9 @@ namespace ETrade.WebUI.Services.MessageServices
  
         Task<List<ResultInboxMessageDto>> GetInboxMessageAsync(string id);
         Task<List<ResultSendboxMessageDto>> GetSendboxMessageAsync(string id);
+        Task<int> GetTotalMessageCount();
+        Task<int> GetTotalMessageCountByReciverId(string id);
+
         //Task CreateMessageAsync(CreateMessageDto createMessage);
         //Task UpdateMessageAsync(UpdateMessageDto updateMessage);
         //Task DeleteMessageAsync(int id);
