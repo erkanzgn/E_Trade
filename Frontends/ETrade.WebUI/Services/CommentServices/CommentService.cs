@@ -45,9 +45,31 @@ namespace ETrade.WebUI.Services.CommentServices
             return values;
         }
 
+
         public async Task UpdateCommentAsync(UpdateCommentDto commentDto)
         {
             await _httpClient.PutAsJsonAsync<UpdateCommentDto>("comments", commentDto);
+        }
+
+        public async Task<int> GetActiveCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("comments/ActiveCommentCount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
+
+        public async Task<int> GetPassiveCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("comments/PassiveCommentCount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
+
+        public async Task<int> GetTotalCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("comments/GetTotalCommentCount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
         }
     }
 }

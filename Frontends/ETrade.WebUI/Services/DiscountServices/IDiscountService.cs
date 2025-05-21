@@ -6,5 +6,6 @@ namespace ETrade.WebUI.Services.DiscountServices
     {
         Task<GetDicountCodeDeatilByCode> GetDicountCode(string code);
         Task<int> GetDiscountCouponRate(string code);
+        Task<int> GetDiscountCouponCount();
     }
 }

@@ -18,6 +18,13 @@ namespace ETrade.WebUI.Services.DiscountServices
             return values;
         }
 
+        public async Task<int> GetDiscountCouponCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("Discounts/GetDiscountCouponCount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
+
         public async Task<int> GetDiscountCouponRate(string code)
         {
             var responseMessage = await _httpClient.GetAsync("http://localhost:7071/api/Discounts/GetDiscountCouponRate?code="+code);
