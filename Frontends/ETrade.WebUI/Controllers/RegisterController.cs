@@ -28,6 +28,8 @@ namespace ETrade.WebUI.Controllers
                 var jsonData = JsonConvert.SerializeObject(createRegisterDto);
                 StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 var responseMessage = await client.PostAsync("http://localhost:5001/api/Registers", stringContent);
+                var responseContent = await responseMessage.Content.ReadAsStringAsync();
+                Console.WriteLine("API Hata Mesajı: " + responseContent);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index", "Login");

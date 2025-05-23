@@ -2,8 +2,10 @@
 
 namespace ETrade.WebUI.Controllers
 {
+    
     public class PaymentController : Controller
     {
+
         public IActionResult Index()
         {
             ViewBag.directory1 = "Trendshop";

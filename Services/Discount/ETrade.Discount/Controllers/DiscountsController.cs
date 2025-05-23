@@ -49,8 +49,8 @@ namespace ETrade.Discount.Controllers
             return Ok("İndirim kuponu başarıyla güncellendi");
         }
 
-        [HttpGet("GetCodeDetailByCodeAsync")]
-        public async Task<IActionResult> GetCodeDetailByCodeAsync(string code)
+        [HttpGet("GetCodeDetailByCode")]
+        public async Task<IActionResult> GetCodeDetailByCode(string code)
         {
             var values=await _discountService.GetCodeDetailByCodeAsync(code);
             return Ok(values);

@@ -27,7 +27,7 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             ViewBag.v0 = "Kategori İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7074/api/ProductDetails/GetByProductIdProductDetail?id=" + id);
+            var responseMessage = await client.GetAsync("http://localhost:7070/api/ProductDetails/GetByProductIdProductDetail?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -45,7 +45,7 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateProductDetailDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7074/api/ProductDetails/", stringContent);
+            var responseMessage = await client.PutAsync("http://localhost:7070/api/ProductDetails/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
 

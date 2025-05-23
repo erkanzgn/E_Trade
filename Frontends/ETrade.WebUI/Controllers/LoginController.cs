@@ -45,7 +45,7 @@ namespace ETrade.WebUI.Controllers
                 return View(loginDto);
             }
 
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Default");
         }
 
 

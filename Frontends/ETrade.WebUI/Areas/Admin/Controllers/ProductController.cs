@@ -92,23 +92,31 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
 
-
         [Route("ProductListWithCategory")]
+        [HttpGet]
         public async Task<IActionResult> ProductListWithCategory()
-        {
+        { 
             ProductViewBag();
-
-            //var client = _httpClientFactory.CreateClient();
-            //var responseMessage = await client.GetAsync("https://localhost:7074/api/Products/ProductListWithCategory");
-            //if (responseMessage.IsSuccessStatusCode)
-            //{
-            //    var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            //    var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
-            //    return View(values);
-            //}
-
-            return View();
+            var values = await _productService.GetProductsWithCategoryAsync();
+            return View(values);
         }
+
+        //[Route("ProductListWithCategory")]
+        //public async Task<IActionResult> ProductListWithCategory()
+        //{
+        //    
+
+        //    //var client = await _httpClientFactory.CreateClient();
+        //    //var responseMessage = await client.GetAsync("https://localhost:7074/api/Products/ProductListWithCategory");
+        //    //if (responseMessage.IsSuccessStatusCode)
+        //    //{
+        //    //    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        //    //    var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+        //    //    return View(values);
+        //    //}
+
+        //    //return View();
+        //}
         void ProductViewBag()
         {
             ViewBag.v1 = "Anasayfa";

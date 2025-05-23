@@ -11,12 +11,10 @@ namespace ETrade.WebUI.ViewComponents.ShoppingCartViewComponents
         {
             _basketService = basketService;
         }
-
-        public async Task<IViewComponentResult>InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            var basketTotal = await _basketService.GetBasket();
-            var basketItems= basketTotal.BasketItems;
-           return View(basketItems);
+            var values = await _basketService.GetBasket(null);
+            return View(values);
         }
     }
 }

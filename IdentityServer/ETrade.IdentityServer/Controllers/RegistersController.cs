@@ -40,7 +40,8 @@ namespace ETrade.IdentityServer.Controllers
             }
             else
             {
-                return BadRequest("Bir hata oluştu");
+                return BadRequest(result.Errors);
+
             }
 
         }

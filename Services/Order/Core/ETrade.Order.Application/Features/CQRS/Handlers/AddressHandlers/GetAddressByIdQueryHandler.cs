@@ -23,11 +23,22 @@ namespace ETrade.Order.Application.Features.CQRS.Handlers.AddressHandlers
             var values = await _repository.GetByIdAsync(query.Id);
             return new GetAddressByIdQueryResult
             {
-                AddressId=values.AddressId,
+                AddressId = values.AddressId,
                 City = values.City,
-                Detail=values.Detail1,
+                Detail1 = values.Detail1,
                 District = values.District,
-                UserId=values.UserId,
+                UserId = values.UserId,
+                Detail2 = values.Detail2,
+                Country = values.Country,
+                Description = values.Description,
+                Email = values.Email,
+                Name = values.Name,
+                Phone = values.Phone,
+                Surname = values.Surname,
+                ZipCode = values.ZipCode,
+                Isdefault = values.Isdefault,
+                IsInvoice = values.IsInvoice
+
             };
         }
     }

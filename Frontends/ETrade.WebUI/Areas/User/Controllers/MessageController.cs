@@ -1,10 +1,12 @@
-﻿using ETrade.WebUI.Services.Abstracts;
+﻿using ETrade.DtoLayer.MessageDtos;
+using ETrade.WebUI.Services.Abstracts;
 using ETrade.WebUI.Services.MessageServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETrade.WebUI.Areas.User.Controllers
 {
     [Area("User")]
+    [Route("User/Message")]
     public class MessageController : Controller
     {
         private readonly IMessageService _messageService;
@@ -15,19 +17,129 @@ namespace ETrade.WebUI.Areas.User.Controllers
             _messageService = messageService;
             _userService = userService;
         }
-
-        public async  Task<IActionResult> Inbox()
+        [Route("Index")]
+        public async Task<IActionResult> Index()
         {
-            var user=await _userService.GetUserInfo();
-            var values = await _messageService.GetInboxMessageAsync(user.Id);
-            return View(values);
+            var appUser = await _userService.GetUserInfo();
+            ViewBag.appUser = appUser.Name + " " + appUser.Surname;
+            var inboxMessages = await _messageService.GetInboxMessageAsync(appUser.Id);
+            if (inboxMessages != null)
+            {
+                foreach (var item in inboxMessages)
+                {
+                    var allUsers = await _userService.GetAllUserInfo();
+                    var sendUser = allUsers.Where(x => x.Id == item.SenderId).FirstOrDefault();
+                    var senderName = sendUser.Name + " " + sendUser.Surname;
+                    item.SenderName = senderName;
+                }
+            }
+            return View(inboxMessages);
         }
-
-        public async Task<IActionResult> Sendbox()
+        [Route("SendBox")]
+        public async Task<IActionResult> SendBox()
         {
-            var user = await _userService.GetUserInfo();
-            var values = await _messageService.GetSendboxMessageAsync(user.Id);
-            return View(values);
+            var appUser = await _userService.GetUserInfo();
+            ViewBag.appUser = appUser.Name + " " + appUser.Surname;
+            var sendboxMessages = await _messageService.GetSendboxMessageAsync(appUser.Id);
+            if (sendboxMessages != null)
+            {
+                foreach (var item in sendboxMessages)
+                {
+                    var allUsers = await _userService.GetAllUserInfo();
+                    var receiverUser = allUsers.Where(x => x.Id == item.ReceiverId).FirstOrDefault();
+                    var receiveName = receiverUser.Name + " " + receiverUser.Surname;
+                    item.ReceiverName = receiveName;
+                }
+            }
+            return View(sendboxMessages);
+        }
+        [Route("CreateMessage")]
+        [HttpGet]
+        public IActionResult CreateMessage()
+        {
+            return View();
+        }
+        [Route("CreateMessage")]
+        [HttpPost]
+        public async Task<IActionResult> CreateMessage(CreateMessageDto createMessageDto)
+        {
+            var appUser = await _userService.GetUserInfo();
+            createMessageDto.SenderId = appUser.Id;
+            createMessageDto.ReceiverId = "e2288f7e-1d93-4cbe-b79a-ed94edf59bbd";
+            createMessageDto.MessageDate = DateTime.Now.ToUniversalTime();
+            createMessageDto.IsRead = false;
+            await _messageService.CreateMessageAsync(createMessageDto);
+            return RedirectToAction("Sendbox");
+        }
+        [Route("ResponseMessage/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> ResponseMessage(int id)
+        {
+            var message = await _messageService.GetByIdMessageAsync(id);
+            ViewBag.receiverId = message.SenderId;
+            ViewBag.subject = message.Subject;
+            return View();
+        }
+        [Route("ResponseMessage")]
+        [HttpPost]
+        public async Task<IActionResult> ResponseMessage(CreateMessageDto createMessageDto)
+        {
+            var appUser = await _userService.GetUserInfo();
+            createMessageDto.SenderId = appUser.Id;
+            createMessageDto.MessageDate = DateTime.Now.ToUniversalTime();
+            createMessageDto.IsRead = false;
+            await _messageService.CreateMessageAsync(createMessageDto);
+            return RedirectToAction("Sendbox");
+        }
+        [Route("DeleteMessage/{id}")]
+        public async Task<IActionResult> DeleteMessage(int id)
+        {
+            var message = await _messageService.GetByIdMessageAsync(id);
+            await _messageService.DeleteMessageAsync(id);
+            var appUser = await _userService.GetUserInfo();
+            if (message.ReceiverId == appUser.Id)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Sendbox");
+            }
+        }
+        [Route("UpdateMessage/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> UpdateMessage(int id)
+        {
+            var message = await _messageService.GetByIdMessageAsync(id);
+            return View(message);
+        }
+        [Route("UpdateMessage")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateMessage(UpdateMessageDto updateMessageDto)
+        {
+            var appUser = await _userService.GetUserInfo();
+            updateMessageDto.MessageDate = updateMessageDto.MessageDate.ToUniversalTime();
+            await _messageService.UpdateMessageAsync(updateMessageDto);
+
+            if (updateMessageDto.ReceiverId == appUser.Id)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Sendbox");
+            }
+        }
+        [Route("MessageDetail/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> MessageDetail(int id)
+        {
+            var appUser = await _userService.GetUserInfo();
+            ViewBag.appUser = appUser.Id;
+            var message = await _messageService.GetByIdMessageAsync(id);
+            message.IsRead = true;
+            await _messageService.UpdateMessageAsync(message);
+            return View(message);
         }
     }
 }

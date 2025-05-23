@@ -21,13 +21,14 @@ namespace ETrade.WebUI.Areas.Admin.ViewComponents.AdminLayoutViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var user = await _userService.GetUserInfo();
-            int messageCount = await _messageService.GetTotalMessageCountByReciverId(user.Id);
-            ViewBag.messageCount = messageCount;
 
+            //var user = await _userService.GetUserInfo();
 
-            int totalCommentCount = await _commentService.GetTotalCommentCount();
-            ViewBag.totalCommetCount = totalCommentCount;
+            //int messageCount = await _messageService.GetTotalMessageCountByReciverId(user.Id);
+            //ViewBag.messageCount = messageCount;
+
+            //int totalCommentCount = await _commentService.GetTotalCommentCount();
+            //ViewBag.totalCommetCount = totalCommentCount;
 
 
             return View();

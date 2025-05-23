@@ -5,9 +5,9 @@ using Newtonsoft.Json;
 
 namespace ETrade.WebUI.ViewComponents.ProductDetailViewComponent
 {
-    public class _ProductDetailImageSliderComponentPartial:ViewComponent
+    public class _ProductDetailImageSliderComponentPartial : ViewComponent
     {
-   
+
         private readonly IProductImageService _productImageService;
 
         public _ProductDetailImageSliderComponentPartial(IProductImageService productImageService)
@@ -15,12 +15,25 @@ namespace ETrade.WebUI.ViewComponents.ProductDetailViewComponent
             _productImageService = productImageService;
         }
 
-   
+
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
-            var values=await _productImageService.GetByProductIdProductImageAsync(id);
-            return View(values);
-     
+            var dto = await _productImageService.GetByProductIdProductImageAsync(id);
+
+            if (dto == null)
+            {
+                dto = new GetByIdProductImageDto
+                {
+                    Image1 = "/images/default.png",
+                    Image2 = "/images/default.png",
+                    Image3 = "/images/default.png",
+                    Image4 = "/images/default.png"
+                };
+            }
+
+            return View(dto);
+
         }
+
     }
 }

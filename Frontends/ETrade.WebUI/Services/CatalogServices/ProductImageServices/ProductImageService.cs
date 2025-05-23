@@ -50,6 +50,7 @@ namespace ETrade.WebUI.Services.CatalogServices.ProductImageServices
             return values;
         }
 
-      
+
+
     }
 }

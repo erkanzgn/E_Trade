@@ -6,57 +6,74 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ETrade.WebUI.Controllers
 {
+    [Route("ShoppingCart")]
     public class ShoppingCartController : Controller
     {
         private readonly IProductService _productService;
         private readonly IBasketService _basketService;
- 
+        private readonly IDiscountService _discountService;
 
-        public ShoppingCartController(IProductService productService, IBasketService basketService)
+        public ShoppingCartController(IProductService productService, IBasketService basketService, IDiscountService discountService)
         {
             _productService = productService;
             _basketService = basketService;
+            _discountService = discountService;
         }
-
-        public async  Task<IActionResult> Index(string code,int discountRate)
+        [Route("Index")]
+        [Route("Index/{code}")]
+        public async Task<IActionResult> Index(string? code)
         {
-            ViewBag.code = code;
-            ViewBag.discountRate = discountRate;
-            ViewBag.directory1 = "Ana Sayfa";
-            ViewBag.directory2 = "Ürünler";
-            ViewBag.directory3 = "Sepetim";
-            var values = await _basketService.GetBasket();
-            ViewBag.total = values.TotalPrice;
-            var taxPrice=values.TotalPrice*10/100;
-            var totalPriceWithTax = values.TotalPrice + taxPrice;
-            var discountPrice=totalPriceWithTax*discountRate/100;
-            ViewBag.discountPrice = discountPrice;
-            ViewBag.taxPrice = taxPrice;
-            ViewBag.totalPrice=totalPriceWithTax-discountPrice;
+            ViewBag.Dr1 = "Anasayfa";
+            ViewBag.Dr2 = "/Default/Index/";
+            ViewBag.Dr3 = "Ürünler";
+            ViewBag.Dr4 = "/ProductList/Index/";
+            ViewBag.Dr5 = "Sepetim";
+            if (code != null)
+            {
+                var values = await _discountService.GetByCodeDiscountCouponAsync(code);
+                ViewData["codeRate"] = values.Rate;
+                ViewData["codeName"] = values.Code;
+                ViewBag.codeName = values.Code;
+            }
             return View();
         }
 
-        public async Task<IActionResult> AddBasketItem(string id)
+        [Route("AddBasketItem/{productId}")]
+        [Route("AddBasketItem/")]
+        public async Task<IActionResult> AddBasketItem(string productId)
         {
-            var values = await _productService.GetByIdProductAsync(id);
+            var values = await _productService.GetByIdProductAsync(productId);
             var items = new BasketItemDto
             {
                 ProductId = values.ProductId,
                 ProductName = values.ProductName,
                 Price = values.ProductPrice,
-                Quantity = 1,
                 ProductImageUrl = values.ProductImageUrl,
+                Quantity = 1
             };
             await _basketService.AddBasketItem(items);
             return RedirectToAction("Index");
-
         }
-        public async Task<IActionResult> RemoveBasketItem(string id)
+        [Route("ShoppingCartUpdate/{productId}/{quantity}")]
+        public async Task<IActionResult> ShoppingCartUpdate(string productId, int quantity)
         {
-            await _basketService.RemoveBasketItem(id);
+            var values = await _productService.GetByIdProductAsync(productId);
+            var items = new BasketItemDto
+            {
+                ProductId = values.ProductId,
+                ProductName = values.ProductName,
+                Price = values.ProductPrice,
+                ProductImageUrl = values.ProductImageUrl,
+                Quantity = quantity
+            };
+            await _basketService.AddBasketItem(items);
+            return RedirectToAction("Index"); ;
+        }
+        [Route("RemoveBasketItem/{productId}")]
+        public async Task<IActionResult> RemoveBasketItem(string productId)
+        {
+            await _basketService.RemoveBasketItem(productId);
             return RedirectToAction("Index");
         }
-
-
     }
 }

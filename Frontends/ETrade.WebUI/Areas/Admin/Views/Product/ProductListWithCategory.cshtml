@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "ProductListWithCategory";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
-    int count = 0;
+
 
 }
 
@@ -13,8 +13,7 @@
                 <div class="bs-example" data-example-id="bordered-table">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th>#</th>
+                            <tr> 
                                 <th>Ürün Adı</th>
                                 <th>Ürün Fiyatı</th>
                                 <th>Ürün Kategori</th>
@@ -27,12 +26,12 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                count++;
+                              
                                 <tr>
-                                    <th scope="row">@count</th>
+                                 
                                     <td>@item.ProductName</td>
                                     <td>@item.ProductPrice</td>
-                                    <td>@item.Category.CategoryName</td>
+
                                     <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
                                     <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
                                     <td><a href="/Admin/ProductImage/ProductImageDetail/@item.ProductId" class="btn btn-warning">Ürün Görselleri</a></td>

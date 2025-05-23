@@ -1,4 +1,4 @@
-using ETrade.WebUI.Handlers;
+﻿using ETrade.WebUI.Handlers;
 using ETrade.WebUI.Services.Abstracts;
 using ETrade.WebUI.Services.BasketServices;
 using ETrade.WebUI.Services.CargoServices.CargoCompanyServices;
@@ -188,6 +188,7 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
 
 
 
+
 var app = builder.Build();
 
 
@@ -204,7 +205,9 @@ app.UseHttpsRedirection();
 app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
 app.UseStaticFiles();
+
 app.UseAuthentication();
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -224,6 +227,7 @@ app.UseEndpoints(endpoints =>
     name: "default",
     pattern: "{controller=Default}/{action=Index}/{id?}"
 );
+   
 });
 
 

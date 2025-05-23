@@ -3,12 +3,14 @@ using ETrade.WebUI.Services.DiscountServices;
 using ETrade.WebUI.Services.MessageServices;
 using ETrade.WebUI.Services.StatisticServices.CatalogStatisticServices;
 using ETrade.WebUI.Services.StatisticServices.UserStatisticServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETrade.WebUI.Areas.Admin.Controllers
 {
+
     [Area("Admin")]
-    public class StatisticController : Controller
+    public class DefaultController : Controller
     {
         private readonly ICatalogStatisticService _catalogStatisticService;
         private readonly IUserStatisticService _userStatisticService;
@@ -16,7 +18,7 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
         private readonly IDiscountService _discountService;
         private readonly IMessageService _messageService;
 
-        public StatisticController(ICatalogStatisticService catalogStatisticService, IUserStatisticService userStatisticService, 
+        public DefaultController(ICatalogStatisticService catalogStatisticService, IUserStatisticService userStatisticService, 
             ICommentService commentService, IDiscountService discountService, IMessageService messageService)
         {
             _catalogStatisticService = catalogStatisticService;
@@ -26,8 +28,14 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             _messageService = messageService;
         }
 
+
         public async  Task<IActionResult> Index()
         {
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Index", "Login");
+
+            //}
             var getBrandCount = await _catalogStatisticService.GetBrandCount();
             var getProductCount = await _catalogStatisticService.GetProductCount();
             var getCategoryCount = await _catalogStatisticService.GetCategoryCount();
@@ -40,9 +48,8 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             var getActiveCommentCount = await _commentService.GetActiveCommentCount();
             var getPassiveCommentCount = await _commentService.GetPassiveCommentCount();
 
-            var getDiscountCouponCount = await _discountService.GetDiscountCouponCount();
+            //var getDiscountCouponCount = await _discountService.GetDiscountCouponCount();
 
-            var getMessageCount=await _messageService.GetTotalMessageCount();
            
           //  var getProductAvgPrice = await _catalogStatisticService.GetProductAvgPrice();
             ViewBag.getBrandCount= getBrandCount;
@@ -54,8 +61,8 @@ namespace ETrade.WebUI.Areas.Admin.Controllers
             ViewBag.getActiveCommentCount = getActiveCommentCount;
             ViewBag.getPassiveCommentCount = getPassiveCommentCount;
             ViewBag.getTotalCommentCount = getTotalCommentCount;
-            ViewBag.getDiscountCouponCount = getDiscountCouponCount;
-            ViewBag.getMessageCount = getMessageCount;
+            //ViewBag.getDiscountCouponCount = getDiscountCouponCount;
+          
           //  ViewBag.getProductAvgPrice = getProductAvgPrice;
             return View();
         }

@@ -1,20 +1,25 @@
 ﻿
+using Newtonsoft.Json;
+
 namespace ETrade.SignalRRealTimeApi.Services.SignalRCommentServices
 {
     public class SignalRCommentService : ISignalRCommetService
     {
-        private readonly HttpClient _httpClient;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public SignalRCommentService(HttpClient httpClient)
+        public SignalRCommentService(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            _httpClientFactory = httpClientFactory;
         }
+
 
         public async Task<int> GetTotalCommentCount()
         {
-            var responseMessage = await _httpClient.GetAsync("comments/GetTotalCommentCount");
-            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
-            return values;
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:7076/api/Statistics");
+            var jsonData=await responseMessage.Content.ReadAsStringAsync();
+            var commentCount=JsonConvert.DeserializeObject<int>(jsonData);
+            return commentCount;
         }
 
     }

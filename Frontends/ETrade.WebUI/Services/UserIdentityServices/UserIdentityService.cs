@@ -1,8 +1,10 @@
 ﻿using ETrade.DtoLayer.IdentityDtos.UserDtos;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace ETrade.WebUI.Services.UserIdentityServices
 {
+
     public class UserIdentityService : IUserIdentityService
     {
         private readonly HttpClient _httpClient;

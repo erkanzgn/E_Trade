@@ -52,13 +52,39 @@ namespace ETrade.WebUI.Services.CatalogServices.ProductServices
             return values;
         }
 
+        //public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string categoryId)
+        //{
+        //    var responseMessage = await _httpClient.GetAsync("products/ProductListWithCategoryByCategoryId/" + categoryId);
+        //    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        //    var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+        //    return values;
+        //}
         public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string categoryId)
         {
-            var responseMessage = await _httpClient.GetAsync("products/ProductListWithCategoryByCategoryId/"+categoryId);
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
-            return values;
-        }
+            var responseMessage = await _httpClient.GetAsync($"Products/ProductListWithCategoryByCategoryId/{categoryId}");
 
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception($"API call failed with status: {responseMessage.StatusCode}");
+            }
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            if (string.IsNullOrWhiteSpace(jsonData))
+            {
+                return new List<ResultProductWithCategoryDto>();
+            }
+            Console.WriteLine($"API Response: {jsonData}");
+            try
+            {
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+                return values ?? new List<ResultProductWithCategoryDto>();
+            }
+            catch (JsonException ex)
+            {
+                // JSON parse hatası durumunda log'layın
+                Console.WriteLine($"JSON Parse Error: {ex.Message}");
+                Console.WriteLine($"Response Content: {jsonData}");
+                throw;
+            }
+        }
     }
 }

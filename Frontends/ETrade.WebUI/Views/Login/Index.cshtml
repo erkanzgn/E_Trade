@@ -2,88 +2,121 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Form-v4 by Colorlib</title>
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="css/opensans-font.css">
-	<link rel="stylesheet" type="text/css" href="fonts/line-awesome/css/line-awesome.min.css">
-	<!-- Jquery -->
-	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
-	<!-- Main Style Css -->
-	<link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
-</head>
-<body class="form-v4">
-	<div class="page-content">
-		<div class="form-v4-content">
-			<div class="form-left">
-				<h2>Trendshop E-Ticaret</h2>
-				<p class="text-1">Trendshop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek , indirimli ürünler ve fırsatlardan haberdar olmak için hemen Giriş Yapın. </p>
-				<p class="text-2">Alışverinizi gerçekleştirebilmek , sepetinize ürün eklemek ve ürün listesini görebilmek için oturum açmanız gerekir . Hesabınız yoksa kayıt olabilirsiniz</p>
-				
-				<div class="form-row-last">
-					<a href="/Register/Index" style="height:35px"  class="account">Kayıt ol</a>
-				</div>
-			</div>
-			<form class="form-detail" method="post">
-				<h2>Kullanıcı Giriş Formu</h2>
-				<div class="form-row">
-					<label for="your_email">Kullanıcı Adınız</label>
-					<input type="text"  id="your_username" asp-for="UserName" class="input-text" required>
-				</div>
-				<div class="form-row">
-					<label for="your_email">Şifreniz</label>
-					<input type="password"  id="your_password" asp-for="Password" class="input-text" required>
-				</div>
+<html lang="tr">
 
-				<div class="form-row-last">
-					<input type="submit" name="register" class="register" value="Giriş Yap">
-				</div>
-			</form>
-		</div>
-	</div>
-	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-	<script>
-		// just for the demos, avoids form submit
-		jQuery.validator.setDefaults({
-			debug: true,
-			success:  function(label){
-				label.attr('id', 'valid');
-			},
-		});
-		$( "#myform" ).validate({
-			rules: {
-				password: "required",
-				comfirm_password: {
-					equalTo: "#password"
-				}
-			},
-			messages: {
-				first_name: {
-					required: "Please enter a firstname"
-				},
-				last_name: {
-					required: "Please enter a lastname"
-				},
-				your_email: {
-					required: "Please provide an email"
-				},
-				password: {
-					required: "Please enter a password"
-				},
-				comfirm_password: {
-					required: "Please enter a password",
-					equalTo: "Wrong Password"
-				}
-			}
-		});
-	</script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Trendshop Giriş</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="~/spica-1.0.0/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/spica-1.0.0/vendors/css/vendor.bundle.base.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/spica-1.0.0/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/spica-1.0.0/images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller d-flex">
+        <div class="container-fluid page-body-wrapper full-page-wrapper d-flex">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <div class="brand-logo text-center">
+                                <img src="~/images/default.png" alt="logo">
+                            </div>
+                            <h4>Hoş geldiniz!</h4>
+                            <h6 class="font-weight-light">Devam etmek için giriş yapın.</h6>
+
+                            <form class="pt-3" id="loginForm" method="post">
+                                <div class="form-group">
+                                    <input type="text" asp-for="UserName" name="username" class="form-control form-control-lg" id="username" placeholder="Kullanıcı Adı">
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" asp-for="Password" name="password" class="form-control form-control-lg" id="password" placeholder="Şifre">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="mt-3">
+                                    <button type="submit" class="btn btn-block btn-lg font-weight-medium auth-form-btn"
+                                            style="background-color: #ffcc00; color: black;">
+                                        GİRİŞ YAP
+                                    </button>
+                                </div>
+
+                                <div class="my-2 d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <label class="form-check-label text-muted">
+                                            <input type="checkbox" class="form-check-input"> Beni hatırla
+                                        </label>
+                                    </div>
+                                    <a href="#" class="auth-link text-black">Şifremi unuttum</a>
+                                </div>
+                                <div class="text-center mt-4 font-weight-light">
+                                    Hesabın yok mu? <a href="/Register/Index" class="text-primary">Kayıt Ol</a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- JS files -->
+    <script src="~/spica-1.0.0/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/spica-1.0.0/js/off-canvas.js"></script>
+    <script src="~/spica-1.0.0/js/hoverable-collapse.js"></script>
+    <script src="~/spica-1.0.0/js/template.js"></script>
+
+    <!-- jQuery & Validation -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#loginForm").validate({
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 3
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    }
+                },
+                messages: {
+                    username: {
+                        required: "Kullanıcı adı gereklidir.",
+                        minlength: "En az 3 karakter giriniz."
+                    },
+                    password: {
+                        required: "Şifre gereklidir.",
+                        minlength: "Şifre en az 6 karakter olmalıdır."
+                    }
+                },
+                errorClass: "text-danger",
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element);
+                }
+            });
+
+            $('#loginForm').on('submit', function (e) {
+                if (!$(this).valid()) {
+                    e.preventDefault(); // Formu post etme
+                }
+            });
+        });
+    </script>
+
+</body>
+
 </html>

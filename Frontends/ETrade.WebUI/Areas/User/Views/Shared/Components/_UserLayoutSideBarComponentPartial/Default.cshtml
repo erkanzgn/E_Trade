@@ -1,68 +1,73 @@
 ﻿<nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item sidebar-category">
-            <p>Trenshop Kullanıcı Paneli</p>
+            <p>Menü</p>
             <span></span>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../../index.html">
-                <i class="mdi mdi-view-quilt menu-icon"></i>
-                <span class="menu-title">Dashboard</span>
-                <div class="badge badge-info badge-pill">2</div>
-            </a>
-        </li>
-        <li class="nav-item sidebar-category">
-            <p>Menüler</p>
-            <span></span>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="../../pages/forms/basic_elements.html">
-                <i class="mdi mdi-view-headline menu-icon"></i>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item">
+        @* <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="mdi mdi-palette menu-icon"></i>
-                <span class="menu-title">Siparişler</span>
+                <span class="menu-title">UI Elements</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="/User/Message/Inbox">Siparişler</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/User/Message/sendbox">Geçmiş Siparişler</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Buttons</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Typography</a></li>
                 </ul>
             </div>
+        </li> *@
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="mdi mdi-view-headline menu-icon"></i>
+                <span class="menu-title">DashBoard</span>
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../pages/icons/mdi.html">
-                <i class="mdi mdi-emoticon menu-icon"></i>
+            <a class="nav-link" href="/User/MyOrder/MyOrderList/">
+                <i class="mdi mdi-view-module menu-icon"></i>
+                <span class="menu-title">Siparişlerim</span>
+            </a>
+        </li>
+        @* <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="mdi mdi-chart-pie menu-icon"></i>
+                <span class="menu-title">Geçmiş Siparişlerim</span>
+            </a>
+        </li> *@
+        @* <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Kargolarım</span>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../../pages/icons/mdi.html">
+        </li> *@
+        @* <li class="nav-item">
+            <a class="nav-link" href="#">
                 <i class="mdi mdi-emoticon menu-icon"></i>
-                <span class="menu-title">Profil Bilgilerim</span>
+                <span class="menu-title">Profilim</span>
+            </a>
+        </li> *@
+        <li class="nav-item">
+            <a class="nav-link" href="/User/Message/Index/">
+                <i class="mdi mdi-message menu-icon"></i>
+                <span class="menu-title">Gelen Mesajlarım</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <i class="mdi mdi-palette menu-icon"></i>
-                <span class="menu-title">Mesajlar</span>
-                <i class="menu-arrow"></i>
+            <a class="nav-link" href="/User/Message/Sendbox/">
+                <i class="mdi mdi-message-reply menu-icon"></i>
+                <span class="menu-title">Giden Mesajlarım</span>
             </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="/User/Message/Inbox">Gelen Mesajlar</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/User/Message/sendbox">Giden Mesajlar</a></li>
-                </ul>
-            </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../../pages/icons/mdi.html">
-                <i class="mdi mdi-emoticon menu-icon"></i>
+            <a class="nav-link" href="/User/Message/CreateMessage/">
+                <i class="mdi mdi-message-plus menu-icon"></i>
+                <span class="menu-title">Yeni Mesaj Gönder</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Default/Index">
+                <i class="mdi mdi-exit-to-app menu-icon"></i>
                 <span class="menu-title">Çıkış Yap</span>
             </a>
         </li>

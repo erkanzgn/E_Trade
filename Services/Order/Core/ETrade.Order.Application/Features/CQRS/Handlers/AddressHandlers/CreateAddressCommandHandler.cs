@@ -33,6 +33,8 @@ namespace ETrade.Order.Application.Features.CQRS.Handlers.AddressHandlers
                 Name=createAddressCommand.Name,
                 Phone=createAddressCommand.Phone,
                 ZipCode=createAddressCommand.ZipCode,
+                Isdefault = createAddressCommand.Isdefault,
+                IsInvoice = createAddressCommand.IsInvoice
 
             });
         }

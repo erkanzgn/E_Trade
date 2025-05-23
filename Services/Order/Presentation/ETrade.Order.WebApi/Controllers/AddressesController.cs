@@ -61,5 +61,12 @@ namespace ETrade.Order.WebApi.Controllers
             await _removeAddressCommandHandler.Handle(new RemoveAddressCommand(id));
             return Ok("Address Bilgisi Başarıyla Silindi");
         }
+        [HttpGet("GetAddressListByUserId/{id}")]
+        public async Task<IActionResult> GetAddressListByUserId(string id)
+        {
+            var values = await _getAddressQueryHandler.Handle();
+            var userAddresses = values.Where(x => x.UserId == id).ToList();
+            return Ok(userAddresses);
+        }
     }
 }

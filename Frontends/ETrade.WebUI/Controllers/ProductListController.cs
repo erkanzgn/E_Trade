@@ -22,6 +22,14 @@ namespace ETrade.WebUI.Controllers
             ViewBag.directory3 = "Ürün Listesi";
             return View();
         }
+        public IActionResult AllProducts()
+        {
+            ViewBag.directory1 = "Ana Sayfa";
+            ViewBag.directory2 = "Ürünler";
+            ViewBag.directory3 = "Ürün Listesi";
+            return View();
+        }
+     
         public IActionResult ProductDetail(string id)
         {
             ViewBag.x=id;

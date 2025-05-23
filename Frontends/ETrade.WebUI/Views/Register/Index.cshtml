@@ -1,76 +1,111 @@
 ﻿@model CreateRegisterDto
-
 @{
-    Layout = null;
+	Layout = null;
 }
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Trendshp Kayıt Paneli</title>
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="css/opensans-font.css">
-	<link rel="stylesheet" type="text/css" href="fonts/line-awesome/css/line-awesome.min.css">
-	<!-- Jquery -->
-	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
-	<!-- Main Style Css -->
-	<link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Trendshop - Kayıt Ol</title>
+	<!-- base:css -->
+	<link rel="stylesheet" href="~/spica-1.0.0/vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="~/spica-1.0.0/vendors/css/vendor.bundle.base.css">
+	<!-- endinject -->
+	<!-- inject:css -->
+	<link rel="stylesheet" href="~/spica-1.0.0/css/style.css">
+	<!-- endinject -->
+	<link rel="shortcut icon" href="~/spica-1.0.0/images/favicon.png" />
 </head>
-<body class="form-v4">
-	<div class="page-content">
-		<div class="form-v4-content">
-			<div class="form-left">
-				<h2>Trendshop E-Ticaret</h2>
-				<p class="text-1">Trendshop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek , indirimli ürünler ve fırsatlardan haberdar olmak için hemen kaydolun. </p>
-				<p class="text-2">Eğer bir hesabınız varsa kayıt olmadan devam edebilirsiniz. </p>
-				<div class="form-row-last">
-					<a href="/Login/Index" style="height:35px" class="account">Giriş Yap</a>
+<body>
+	<div class="container-scroller d-flex">
+		<div class="container-fluid page-body-wrapper full-page-wrapper d-flex">
+			<div class="content-wrapper d-flex align-items-center auth px-0">
+				<div class="row w-100 mx-0">
+					<div class="col-lg-4 mx-auto">
+						<div class="auth-form-light text-left py-5 px-4 px-sm-5">
+							<div class="brand-logo">
+								<img src="~/images//spica-1.0.0" alt="logo">
+							</div>
+							<h4>Yeni misin?</h4>
+							<h6 class="font-weight-light">Hemen kaydol, alışverişe başla.</h6>
+							<form asp-action="Index" method="post" class="pt-3">
+								<div class="form-group">
+									<input asp-for="Name" class="form-control form-control-lg" placeholder="Adınız">
+								</div>
+								<div class="form-group">
+									<input asp-for="Surname" class="form-control form-control-lg" placeholder="Soyadınız">
+								</div>
+								<div class="form-group">
+									<input asp-for="UserName" class="form-control form-control-lg" placeholder="Kullanıcı Adınız">
+								</div>
+								<div class="form-group">
+									<input asp-for="Email" class="form-control form-control-lg" placeholder="Email">
+								</div>
+								<div class="form-group">
+									<input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Şifre">
+								</div>
+								<div class="form-group">
+									<input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg" placeholder="Şifre Tekrar">
+								</div>
+								<div class="mb-4">
+									<div class="form-check">
+										<label class="form-check-label text-muted">
+											<input type="checkbox" class="form-check-input"> Tüm şartları kabul ediyorum.
+										</label>
+									</div>
+								</div>
+								<div class="mt-3">
+									<button type="submit" class="btn btn-block btn-warning btn-lg font-weight-medium auth-form-btn">KAYIT OL</button>
+								</div>
+								<div class="text-center mt-4 font-weight-light">
+									Zaten hesabın var mı? <a href="/Login/Index" class="text-primary">Giriş Yap</a>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
-			<form class="form-detail" method="post" >
-				<h2>Kayıt Formu</h2>
-				<div class="form-group">
-					<div class="form-row form-row-1">
-						<label for="first_name">Adınız</label>
-						<input type="text" asp-for="Name" id="first_name" class="input-text">
-					</div>
-					<div class="form-row form-row-1">
-						<label for="last_name">Soyadınız</label>
-						<input type="text" asp-for="Surname" id="last_name" class="input-text">
-					</div>
-				</div>
-				<div class="form-row">
-					<label for="your_email">Email Adresi</label>
-					<input type="text" asp-for="Email" id="your_email" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
-				</div>
-				<div class="form-row">
-					<label for="your_email">Kullanıcı Adınız</label>
-					<input type="text" asp-for="UserName" id="your_username" class="input-text" required>
-				</div>
-				<div class="form-group">
-					<div class="form-row form-row-1 ">
-						<label for="password">Şifre</label>
-						<input type="password" asp-for="Password" id="password" class="input-text" required>
-					</div>
-					<div class="form-row form-row-1">
-						<label for="comfirm-password">Şifre Tekrar</label>
-						<input type="password" asp-for="ConfirmPassword" id="comfirm_password" class="input-text" required>
-					</div>
-				</div>
-
-				<div class="form-row-last">
-					<input type="submit" name="register" class="register" value="Kayit ol">
-				</div>
-			</form>
+			<!-- content-wrapper ends -->
 		</div>
+		<!-- page-body-wrapper ends -->
 	</div>
-	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+	<!-- container-scroller -->
+	<!-- base:js -->
+	<script src="~/spica-1.0.0/vendors/js/vendor.bundle.base.js"></script>
+	<!-- inject:js -->
+	<script src="~/spica-1.0.0/js/off-canvas.js"></script>
+	<script src="~/spica-1.0.0/js/hoverable-collapse.js"></script>
+	<script src="~/spica-1.0.0/js/template.js"></script>
 	<script>
+				$.validator.addMethod("strongPassword", function (value, element) {
+			return this.optional(element)
+				|| /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/.test(value);
+		}, "Şifreniz en az 1 büyük harf, 1 küçük harf, 1 rakam, 1 özel karakter içermeli ve en az 8 karakter olmalı.");
+
+		$("#myform").validate({
+			rules: {
+				password: {
+					required: true,
+					strongPassword: true
+				},
+				comfirm_password: {
+					required: true,
+					equalTo: "#password"
+				}
+			},
+			messages: {
+				password: {
+					required: "Lütfen bir şifre girin.",
+					strongPassword: "Zayıf şifre. Lütfen kurallara uygun bir şifre girin."
+				},
+				comfirm_password: {
+					required: "Lütfen şifrenizi tekrar girin.",
+					equalTo: "Şifreler uyuşmuyor."
+				}
+			}
+		});
+
 		// just for the demos, avoids form submit
 		jQuery.validator.setDefaults({
 		  	debug: true,
@@ -107,3 +142,4 @@
 	</script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
+

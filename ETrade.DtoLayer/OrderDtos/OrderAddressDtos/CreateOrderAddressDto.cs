@@ -8,6 +8,7 @@ namespace ETrade.DtoLayer.OrderDtos.OrderAddressDtos
 {
     public class CreateOrderAddressDto
     {
+      
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -20,5 +21,7 @@ namespace ETrade.DtoLayer.OrderDtos.OrderAddressDtos
         public string Detail2 { get; set; }
         public string Description { get; set; }
         public string ZipCode { get; set; }
+        public bool Isdefault { get; set; }
+        public bool IsInvoice { get; set; }
     }
 }
